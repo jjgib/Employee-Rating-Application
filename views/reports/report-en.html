@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html>
+	<head>
+        <meta name="robots" content="noindex" />
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+		<title>Annex 2 to the Corona Test Structure Ordinance</title>
+        <style>
+            html, body {
+	margin: 0;
+	padding: 0;
+	font-family: "Roboto", -apple-system, "San Francisco", "Segoe UI", "Helvetica Neue", sans-serif;
+	font-size: 12pt;
+}
+* {
+	
+	box-sizing: border-box;
+	-moz-box-sizing: border-box;
+}
+.page {
+	margin: 20px auto;
+	background: rgb(255, 255, 255);
+	box-shadow: 0 4px 5px rgba(75, 75, 75, 0.2);
+	outline: 0;
+}
+div.page-break {
+	page-break-after: always;
+}
+
+@media screen {
+	
+	div.page-break::before {
+		content: "";
+		display: block;
+		height: 0.8cm;
+		margin-left: 0.5cm;
+		margin-right: 0.5cm;
+		background-color: rgb(255, 255, 255);
+		box-shadow: 0 6px 5px rgba(75, 75, 75, 0.2);
+	}
+	div.page-break {
+		display: block;
+		height: 1.8cm;
+		margin-left: -2.5cm;
+		margin-right: -2.5cm;
+		margin-top: 1.2cm;
+		margin-bottom: 2cm;
+		background: rgb(238, 238, 238);
+	}
+}
+
+/*h1 {
+	page-break-before: always;
+}*/
+
+h1, h2, h3, h4, h5, h6 {
+	page-break-after: avoid;
+}
+p {
+	margin: 0;
+}
+
+p + p {
+	margin-top: 0.5cm;
+}
+
+a {
+	text-decoration: none;
+	color: rgb(0, 0, 0);
+}
+
+table {
+	page-break-inside: avoid;
+}
+input:focus {
+    outline: none;
+}
+
+/*@page {
+	orphans: 4;
+	widows: 2;
+}*/
+
+@media print {
+	html, body {
+		background-color: rgb(255, 255, 255);
+	}
+	.page {
+		width: initial !important;
+		min-height: initial !important;
+		margin: 0 !important;
+		padding: 0 !important;
+		border: initial !important;
+		border-radius: initial !important;
+		background: initial !important;
+		box-shadow: initial !important;
+
+		page-break-after: always;
+	}
+}
+
+.page {
+	/*width: 21cm;*/
+	width: 1048px;
+	min-height: 29.7cm;
+	padding-left: 2cm;
+	padding-top: 2cm;
+	padding-right: 2cm;
+	padding-bottom: 2cm;
+}
+@page {
+	size: A4 portrait;
+	margin-left: 2cm;
+	margin-top: 2cm;
+	margin-right: 2cm;
+	margin-bottom: 2cm;
+}
+        </style>
+	</head>
+	<body class="document">
+		<div class="page">
+            <div class="top">
+                <h1 style="text-align: center;font-size: 18px;">Annex 2 to the Corona Test Structure Ordinance</h1>
+            </div>
+            <table border="0" width="100%" cellpadding="0" cellspacing="0">
+                <tbody>
+                    <tr valign="top">
+                        <td>
+                            <table width="100%" cellpadding="0" cellspacing="0">
+                                <tr>
+                                    <td width="80%">
+                                        <h2 style="font-size: 18px;">Certificate of the existence of a positive or negative 
+                                           <br> antigen test for the detection of the SARS-CoV-2 virus</h2>
+                                    </td>
+                                    <td><img src="/img/anlage_2_logo.png" alt="logo" width="95px" height="99px"></td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <table width="100%" cellpadding="0" cellspacing="0" align="center">
+                                <tr>
+                                    <td width="60%"></td>
+                                    <td align="center">
+                                        <span style="font-size: 16px;font-weight: bold;">Test center/ Test site:</span><br>
+                                        <span style="font-size: 14px;">(Address, Test sites-No.)</span><br>
+                                        <input type="text" name="Testzentrum1" style="border: 2px solid rgb(136, 136, 136);font-size:14px;width:100%;padding: 4px;">
+                                        <input type="text" name="Testzentrum1" style="border: 2px solid rgb(136, 136, 136);font-size:14px;width:100%;padding: 4px;margin-top: 1px;">
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                    <tr><td height="15px"></td></tr>
+                    <tr>
+                        <td>
+                            <table width="100%" cellpadding="2" cellspacing="0" align="center">
+                                <tr>
+                                    <td colspan="2"><span style="font-size: 16px;font-weight: bold;">Tested person:</span></td>
+                                </tr>
+                                <tr>
+                                    <td width="20%"><span style="font-size: 14px;">Name:</span></td>
+                                    <td><input value="{{name}}" type="text" name="name" style="border: 2px solid rgb(136, 136, 136);font-size:14px;width:100%;padding: 4px;"></td>
+                                </tr>
+                                <tr>
+                                    <td width="20%"><span style="font-size: 14px;">Address:</span></td>
+                                    <td><input value="{{address}}" type="text" name="Anschrift" style="border: 2px solid rgb(136, 136, 136);font-size:14px;width:100%;padding: 4px;"></td>
+                                </tr>
+                                <tr>
+                                    <td width="20%"><span style="font-size: 14px;">Date of birth:</span></td>
+                                    <td><input value="{{DOB}}" type="text" name="Geburtsdatum" style="border: 2px solid rgb(136, 136, 136);font-size:14px;width:100%;padding: 4px;"></td>
+                                </tr>
+                                <tr><td colspan="2" height="10px"></td></tr>
+                                <tr>
+                                    <td width="20%"><span style="font-size: 14px;">Identity check:</span></td>
+                                    <td><table width="30%" cellpadding="0" cellspacing="0">
+                                        <tr><td colspan="2" height="3px"></td></tr>
+                                        <tr>
+                                            <td align="left"><span style="font-size: 14px;vertical-align: top;">Positive*:</span> <input type="checkbox" name="Positiv"></td>
+                                            <td align="left"><span style="font-size: 14px;vertical-align: top;">Negative:</span> <input type="checkbox" name="Negativ"></td>
+                                        </tr>
+                                    </table></td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                    <tr><td height="30px"></td></tr>
+                    <tr>
+                        <td>
+                            <table width="100%" cellpadding="2" cellspacing="0" align="center">
+                                <tr>
+                                    <td colspan="2"><span style="font-size: 16px;font-weight: bold;">Rapid antigen test:</span></td>
+                                </tr>
+                                <tr>
+                                    <td width="20%"><span style="font-size: 14px;">Name of the test:</span></td>
+                                    <td><input value="{{test_name}}" type="text" name="Name_des_Tests" style="border: 2px solid rgb(136, 136, 136);font-size:14px;width:100%;padding: 4px;"></td>
+                                </tr>
+                                <tr>
+                                    <td width="20%"><span style="font-size: 14px;">Manufacturer:</span></td>
+                                    <td><input value="Joinstar Biomedical Technology Co., Ltd." type="text" name="Hersteller" style="border: 2px solid rgb(136, 136, 136);font-size:14px;width:100%;padding: 4px;"></td>
+                                </tr>
+                                <tr>
+                                    <td width="20%"><span style="font-size: 14px;">Test date/Test time:</span></td>
+                                    <td><input value="{{test_date_time}}" type="text" name="Testdatum" style="border: 2px solid rgb(136, 136, 136);font-size:14px;width:100%;padding: 4px;"></td>
+                                </tr>
+                                <tr valign="top">
+                                    <td width="20%"><span style="font-size: 14px;">Test carried out by:<br>(Name)</span></td>
+                                    <td><input value="Christoph Poppe" type="text" name="Test_durchgeführt" style="border: 2px solid rgb(136, 136, 136);font-size:14px;width:100%;padding: 4px;"></td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                    <tr><td height="30px"></td></tr>
+                    <tr>
+                        <td>
+                            <table width="30%" cellpadding="10" cellspacing="0">
+                                <tr>
+                                    <td colspan="2"><span style="font-size: 14px;">Test result:</span></td>
+                                </tr>
+                                <tr>
+                                    <td align="center"><span style="font-size: 14px;vertical-align: top;">Positive*:</span> <input type="checkbox" name="Positiv"></td>
+                                    <td align="center"><span style="font-size: 14px;vertical-align: top;">Negative:</span> <input type="checkbox" name="Negativ"></td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                    <tr><td height="40px" style="border-bottom:1px solid rgb(0, 0, 0);"></td></tr>
+                    <tr><td height="150px"></td></tr>
+                    <tr>
+                        <td><span style="font-size: 14px;">Date / stamp of testing body / signature </span></td>
+                    </tr>
+                    <tr><td height="30px"></td></tr>
+                    <tr>
+                        <td>
+                            <table width="100%" cellpadding="15" cellspacing="0" bgcolor="#cccccc" style="border: 1px solid rgb(0, 0, 0);">
+                                <tr>
+                                    <td>
+                                        <span style="font-size: 14px;">
+                                            Anyone who falsifies this document or incorrectly certifies a test that has not been carried out is liable to prosecution under Section 267 of the German Criminal Code for falsifying documents. Any violation found will be reported.<br>
+                                            <br>
+                                            Anyone who uses a forged document to gain access to a facility or an offer is committing an administrative offense under the state's Corona Protection Ordinance, which is punishable by a fine of € 1000.
+                                        </span>
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                    <tr><td height="20px"></td></tr>
+                    <tr>
+                        <td>
+                            <span style="font-size: 14px;">*If the result is positive, the person must go into quarantine immediately. This also applies to household members of people with a positive rapid test. The quarantine may only be ended if a subsequent PCR test has a negative result. The person who tested positive is entitled to a PCR test for confirmation or refutation</span>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </body>
+</html>

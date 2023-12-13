@@ -1,0 +1,30 @@
+<section>
+    <div class="container">
+        <div class="row mt-5">
+            <div class="col-md-4 offset-md-4">
+                <h2 class="text-center">Create an account</h2>
+                {{#if loginStatus}}
+                <p class="alert alert-success">Created successfully.</p>
+                {{/if}}
+                <form action="/admin/signup" method="POST">
+                    <div class="mb-3">
+                        <label for="exampleInputName" class="form-label">Name</label>
+                        <input type="text" name="Name" class="form-control" id="exampleInputName">
+                    </div>
+                    <div class="mb-3">
+                        <label for="exampleInputEmail1" class="form-label">Email address</label>
+                        <input type="text" name="Email" class="form-control" id="exampleInputEmail1">
+                    </div>
+                    <div class="mb-3">
+                        <label for="exampleInputPassword1" class="form-label">Password</label>
+                        <input type="password" name="Password" class="form-control" id="exampleInputPassword1">
+                    </div>
+                    <div class="mb-3">
+                        <a href="/admin/login">Already have account ?</a>
+                    </div>
+                    <button type="submit" class="btn btn-primary float-end">Signup</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>

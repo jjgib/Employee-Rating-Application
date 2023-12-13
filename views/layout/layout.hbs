@@ -1,0 +1,697 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta name="robots" content="noindex, nofollow" />
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Bootstrap CSS -->
+  <!---<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">--->
+
+  <!-- Google Font: Source Sans Pro -->
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="/plugins/fontawesome-free/css/all.min.css">
+  <!-- daterange picker -->
+  <link rel="stylesheet" href="/plugins/daterangepicker/daterangepicker.css">
+  <!-- iCheck for checkboxes and radio inputs -->
+  <link rel="stylesheet" href="/plugins/icheck-bootstrap/icheck-bootstrap.min.css">
+  <!-- Ionicons -->
+  <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+  <!-- Tempusdominus Bootstrap 4 -->
+  <link rel="stylesheet" href="/plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css">
+  <!-- DataTables -->
+  <link rel="stylesheet" href="/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
+  <link rel="stylesheet" href="/plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
+  <link rel="stylesheet" href="/plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
+
+  <link rel="stylesheet" href="/plugins/toastr/toastr.min.css">
+
+  <!-- Theme style -->
+  <link rel="stylesheet" href="/stylesheets/adminlte.min.css">
+
+  <link href="/stylesheets/style.css" rel="stylesheet">
+  <title>{{title}} - Employee Performance Rating Application</title>
+</head>
+
+<body>
+  {{#if dashboardHeader}}
+  {{>header}}
+  {{/if}}
+
+  {{{body}}}
+
+  {{#if dashboardHeader}}
+  {{>footer}}
+  {{/if}}
+
+  <!---<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>--->
+  <!-- jQuery -->
+  <script src="/plugins/jquery/jquery.min.js"></script>
+  <!-- Bootstrap 4 -->
+  <script src="/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+  <script src="/plugins/moment/moment.min.js"></script>
+  <script src="/plugins/inputmask/jquery.inputmask.min.js"></script>
+  <!-- date-range-picker -->
+  <script src="/plugins/daterangepicker/daterangepicker.js"></script>
+  <!-- Tempusdominus Bootstrap 4 -->
+  <script src="/plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js"></script>
+  <!-- jquery-validation -->
+  <script src="/plugins/jquery-validation/jquery.validate.min.js"></script>
+  <script src="/plugins/jquery-validation/additional-methods.min.js"></script>
+
+  <!-- DataTables  & Plugins -->
+  <script src="/plugins/datatables/jquery.dataTables.min.js"></script>
+  <script src="/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
+  <script src="/plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
+  <script src="/plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
+
+  <script src="/plugins/chart.js/Chart.min.js"></script>
+  <script src="/plugins/toastr/toastr.min.js"></script>
+
+  <!-- AdminLTE App -->
+  <script src="/js/adminlte.js"></script>
+
+  <script>
+
+    $(function () {
+
+
+
+
+      $('#datemask').inputmask('dd/mm/yyyy', { 'placeholder': 'dd/mm/yyyy' });
+      $('[data-mask]').inputmask();
+
+      //Date and time picker
+      $('#reservationdatetime').datetimepicker({ icons: { time: 'far fa-clock' } });
+      $('#joindate').datetimepicker({ format: 'DD/MM/YYYY' }); //'L'
+      $('#fromdate').datetimepicker({ format: 'DD/MM/YYYY' });
+      $('#todate').datetimepicker({ format: 'DD/MM/YYYY', useCurrent: false });
+      $("#fromdate").on("change.datetimepicker", function (e) {
+        $('#todate').datetimepicker('minDate', e.date);
+      });
+
+      /*$.validator.setDefaults({
+        submitHandler: function () {
+          $.ajax({
+            url:"/add-test-details",
+            type:"POST",
+            data: $("#quickForm").serialize(),
+            dataType:"json",
+            success: function(data){
+              if(data.status == 1){
+                alert("Data submitted successfully");
+              }
+            }
+          })
+        }
+      });*/
+
+
+      $("#employeeForm").validate({
+        rules: {
+          firstName: {
+            required: true
+          },
+          lastName: {
+            required: true
+          },
+          email_id: {
+            required: true
+          },
+          Phone: {
+            required: true
+          },
+          Street: {
+            required: true
+          },
+          Zipcode: {
+            required: true,
+            digits: true
+          },
+          Country: {
+            required: true
+          },
+          DOB: {
+            required: true
+          },
+          Address: {
+            required: true
+          },
+          joindate: {
+            required: true
+          }
+        },
+        messages: {
+          Name: {
+            required: "Please enter employee name"
+          },
+          email_id: {
+            required: "Please enter Email Id"
+          },
+          Address: {
+            required: "Please enter address"
+          },
+          DOB: "Please enter date of birth"
+        },
+        errorElement: 'span',
+        errorPlacement: function (error, element) {
+          error.addClass('invalid-feedback');
+          element.closest('.form-group').append(error);
+        },
+        highlight: function (element, errorClass, validClass) {
+          $(element).addClass('is-invalid');
+        },
+        unhighlight: function (element, errorClass, validClass) {
+          $(element).removeClass('is-invalid');
+        },
+        submitHandler: function () {
+          $.ajax({
+            url: "/employee/add-employee",
+            type: "POST",
+            data: $("#employeeForm").serialize(),
+            dataType: "json",
+            success: function (data) {
+              if (data.status == true) {
+                $('.alert.alert-success').html("Data saved successfully");
+                $('.alert.alert-success').fadeIn();
+                //$("#employeeForm").trigger("reset");
+                $("#employeeForm").closest('form').find("input[type=text], input[type=hidden], textarea").val("");
+              }
+              else {
+                $('.alert.alert-danger').html("Error! Data not saved");
+                $('.alert.alert-danger').fadeIn();
+              }
+              setTimeout(() => { $('.alert').fadeOut(); }, 6000)
+            }
+          });
+        }
+      });
+      $('#quickForm').validate({
+        rules: {
+          Name: {
+            required: true
+          },
+          Address: {
+            required: true
+          },
+          DOB: {
+            required: true
+          },
+          identity: {
+            required: true
+          },
+          test_name: {
+            required: true
+          },
+          manufacturer: {
+            required: true
+          },
+          test_date_time: {
+            required: true
+          },
+          test_done_by: {
+            required: true
+          },
+          test_result: {
+            required: true
+          },
+        },
+        messages: {
+          Name: {
+            required: "Please enter person name"
+          },
+          Address: {
+            required: "Please enter address"
+          },
+          DOB: "Please enter date of birth"
+        },
+        errorElement: 'span',
+        errorPlacement: function (error, element) {
+          error.addClass('invalid-feedback');
+          element.closest('.form-group').append(error);
+        },
+        highlight: function (element, errorClass, validClass) {
+          $(element).addClass('is-invalid');
+        },
+        unhighlight: function (element, errorClass, validClass) {
+          $(element).removeClass('is-invalid');
+        },
+        submitHandler: function () {
+          $.ajax({
+            url: "/add-test-details",
+            type: "POST",
+            data: $("#quickForm").serialize(),
+            dataType: "json",
+            success: function (data) {
+              if (data.status == true) {
+                $('.alert.alert-success').html("Data saved successfully");
+                $('.alert.alert-success').fadeIn();
+                $("#quickForm").trigger("reset");
+              }
+              else {
+                $('.alert.alert-success').html("Error! Data not saved");
+                $('.alert.alert-success').fadeIn();
+              }
+              setTimeout(() => { $('.alert').fadeOut(); }, 6000)
+            }
+          })
+        }
+      });
+      $("#ratingPeriodForm").validate({
+        rules: {
+          fromdate: {
+            required: true
+          },
+          todate: {
+            required: true
+          }
+        },
+        messages: {
+          fromdate: {
+            required: "Please enter date"
+          },
+          todate: "Please enter date"
+        },
+        errorElement: 'span',
+        errorPlacement: function (error, element) {
+          error.addClass('invalid-feedback');
+          element.closest('.form-group').append(error);
+        },
+        highlight: function (element, errorClass, validClass) {
+          $(element).addClass('is-invalid');
+        },
+        unhighlight: function (element, errorClass, validClass) {
+          $(element).removeClass('is-invalid');
+        },
+        submitHandler: function () {
+          $.ajax({
+            url: "/admin/add-rating-period",
+            type: "POST",
+            data: $("#ratingPeriodForm").serialize(),
+            dataType: "json",
+            success: function (data) {
+              if (data.status == 1) {
+                $('.alert.alert-success').html(data.message);
+                $('.alert.alert-success').fadeIn();
+                $("#ratingPeriodForm").closest('form').find("input[type=text], input[type=hidden]").val("");
+                periodTable.ajax.reload();
+              }
+              else if (data.status == 2) {
+                $('.alert.alert-danger').html(data.message);
+                $('.alert.alert-danger').fadeIn();
+              }
+              else {
+                $('.alert.alert-danger').html(data.message);
+                $('.alert.alert-danger').fadeIn();
+              }
+              setTimeout(() => { $('.alert').fadeOut(); }, 6000)
+            }
+          });
+        }
+      });
+
+      $("#subscribeForm").validate({
+        rules: {
+          subscribe: {
+            required: true
+          }
+        },
+        messages: {
+          subscribe: "Please select any options"
+        },
+        errorElement: 'span',
+        errorPlacement: function (error, element) {
+          error.addClass('invalid-feedback');
+          element.closest('.form-group').append(error);
+        },
+        highlight: function (element, errorClass, validClass) {
+          $(element).addClass('is-invalid');
+        },
+        unhighlight: function (element, errorClass, validClass) {
+          $(element).removeClass('is-invalid');
+        },
+        submitHandler: function () {
+          $.ajax({
+            url: "/admin/subscribe",
+            type: "POST",
+            data: $("#subscribeForm").serialize(),
+            dataType: "json",
+            success: function (data) {
+              if (data.status == true) {
+                $('.alert.alert-success').empty();
+                $('.alert.alert-success').html("Subscription save successfully!");
+                $('.alert.alert-success').fadeIn();
+              }
+              else {
+                $('.alert.alert-danger').html("Subscription not changed. Try again.");
+                $('.alert.alert-danger').fadeIn();
+              }
+              setTimeout(() => { $('.alert').fadeOut(); }, 6000);
+            }
+          });
+        }
+      });
+
+      var table = $('#example2').DataTable({
+        "paging": true,
+        "lengthChange": false,
+        "searching": true,
+        "ordering": true,
+        "info": true,
+        "autoWidth": false,
+        "responsive": true,
+        "ajax": {
+          url: '/getTestList',
+          dataSrc: ''
+        },
+        "columns": [
+          { data: 'name' },
+          { data: 'DOB' },
+          { data: 'test_name' },
+          { data: 'test_date_time' },
+          { data: 'test_result' },
+          { data: 'actions' }
+        ],
+        "drawCallback": function () {
+          $(".delete-button").on('click', function () {
+            $('#modal-default').modal('show');
+            var deleteId = $(this).attr("data-id");
+            $('.delete-action').attr("data-id", deleteId);
+          });
+        }
+      });
+      var EmpTable = $('#emp-list-table').DataTable({
+        "paging": true,
+        "lengthChange": false,
+        "searching": true,
+        "ordering": true,
+        "info": true,
+        "autoWidth": false,
+        "responsive": true,
+        "ajax": {
+          url: '/employee/getEmpList',
+          dataSrc: ''
+        },
+        "columns": [
+          { data: null },
+          { data: 'firstName' },
+          { data: 'lastName' },
+          { data: 'email' },
+          { data: 'phone' },
+          { data: 'joinDate' },
+          { data: 'actions' }
+        ],
+        "drawCallback": function () {
+          $(".delete-button-emp").on('click', function () {
+            $('#emp-modal-default').modal('show');
+            var deleteId = $(this).attr("data-id");
+            $('.delete-action-emp').attr("data-id", deleteId);
+          });
+          $('.emp-detail-view').click(function () {
+            var id = $(this).data("id");
+
+            $.ajax({
+              url: "/employee/details/",
+              type: "POST",
+              data: { 'empId': id },
+              dataType: "json",
+              success: function (data) {
+                if (data.status == true) {
+                  $('.modal-body .employee-id').html(data.employee[0].employee_id);
+                  $('.modal-body .first-name').html(data.employee[0].first_name);
+                  $('.modal-body .last-name').html(data.employee[0].last_name);
+                  $('.modal-body .email-id').html(data.employee[0].email);
+                  $('.modal-body .phone').html(data.employee[0].phone);
+                  $('.modal-body .dob').html(data.employee[0].dob);
+                  $('.modal-body .street').html(data.employee[0].street);
+                  $('.modal-body .zipcode').html(data.employee[0].zipcode);
+                  $('.modal-body .country').html(data.employee[0].country);
+                  $('.modal-body .join-date').html(data.employee[0].join_date);
+                  $("#emp-details-modal").modal();
+                }
+              }
+            });
+          });
+
+        }
+      });
+      EmpTable.on('order.dt search.dt', function () {
+        EmpTable.column(0, { search: 'applied', order: 'applied' }).nodes().each(function (cell, i) {
+          cell.innerHTML = i + 1;
+        });
+      }).draw();
+
+
+
+      var hrRatingTable = $('#hr-rating-list-table').DataTable({
+        "paging": true,
+        "lengthChange": false,
+        "searching": true,
+        "ordering": true,
+        "info": true,
+        "autoWidth": false,
+        "responsive": true,
+        "ajax": {
+          url: '/admin/hrRatingList',
+          dataSrc: ''
+        },
+        "columns": [
+          { data: null },
+          { data: 'emp_data.[0].firstName' },
+          { data: 'emp_data.[0].lastName' },
+          { data: 'total_rate' },
+          { data: 'createdDate' }
+        ],
+        "drawCallback": function () {
+        }
+      });
+      hrRatingTable.on('order.dt search.dt', function () {
+        hrRatingTable.column(0, { search: 'applied', order: 'applied' }).nodes().each(function (cell, i) {
+          cell.innerHTML = i + 1;
+        });
+      }).draw();
+
+      var selfRatingTable = $('#self-rating-list-table').DataTable({
+        "paging": true,
+        "lengthChange": false,
+        "searching": true,
+        "ordering": true,
+        "info": true,
+        "autoWidth": false,
+        "responsive": true,
+        "ajax": {
+          url: '/admin/selfRatingList',
+          dataSrc: ''
+        },
+        "columns": [
+          { data: null },
+          { data: 'emp_data.[0].firstName' },
+          { data: 'emp_data.[0].lastName' },
+          { data: 'total_rate' },
+          { data: 'createdDate' }
+        ],
+        "drawCallback": function () {
+        }
+      });
+      selfRatingTable.on('order.dt search.dt', function () {
+        selfRatingTable.column(0, { search: 'applied', order: 'applied' }).nodes().each(function (cell, i) {
+          cell.innerHTML = i + 1;
+        });
+      }).draw();
+
+      var coworkerRatingTable = $('#coworker-list-table').DataTable({
+        "paging": true,
+        "lengthChange": false,
+        "searching": true,
+        "ordering": true,
+        "info": true,
+        "autoWidth": false,
+        "responsive": true,
+        "ajax": {
+          url: '/admin/coworkerRatingList',
+          dataSrc: ''
+        },
+        "columns": [
+          { data: null },
+          { data: 'emp_data.[0].firstName' },
+          { data: 'emp_data.[0].lastName' },
+          { data: 'total_rate' },
+          { data: 'createdDate' }
+        ],
+        "drawCallback": function () {
+        }
+      });
+      coworkerRatingTable.on('order.dt search.dt', function () {
+        coworkerRatingTable.column(0, { search: 'applied', order: 'applied' }).nodes().each(function (cell, i) {
+          cell.innerHTML = i + 1;
+        });
+      }).draw();
+
+      var workreportTable = $('#workreport-list-table').DataTable({
+        "paging": true,
+        "lengthChange": false,
+        "searching": true,
+        "ordering": true,
+        "info": true,
+        "autoWidth": false,
+        "responsive": true,
+        "ajax": {
+          url: '/admin/workReportList',
+          dataSrc: ''
+        },
+        "columns": [
+          { data: null },
+          { data: 'name' },
+          { data: 'title' },
+          { data: 'status' },
+          { data: 'action' }
+        ],
+        "drawCallback": function () {
+        }
+      });
+      workreportTable.on('order.dt search.dt', function () {
+        workreportTable.column(0, { search: 'applied', order: 'applied' }).nodes().each(function (cell, i) {
+          cell.innerHTML = i + 1;
+        });
+      }).draw();
+
+      $(".custom-switch :checkbox").change(function () {
+        var id = $(this).data("id");
+        if (this.checked) {
+          updateStatus("verified", id);
+        }
+        else {
+          updateStatus("not verified", id);
+        }
+      });
+
+      function updateStatus(status_val, cid) {
+        $.ajax({
+          type: "POST",
+          url: "/admin/updateReportStatus",
+          data: { id: cid, status: status_val },
+          dataType: "json",
+          success: function (data) {
+            if (data.status == 1) {
+              if (status_val == "verified") {
+                toastr.success(data.message);
+              } else {
+                toastr.info(data.message);
+              }
+            } else {
+              toastr.error('Error! Status not changed.');
+            }
+
+          }
+        });
+      }
+
+
+      var periodTable = $('#rating-period-table').DataTable({
+        "paging": true,
+        "lengthChange": false,
+        "searching": true,
+        "ordering": true,
+        "info": true,
+        "autoWidth": false,
+        "responsive": true,
+        "ajax": {
+          url: '/admin/getPeriodList',
+          dataSrc: ''
+        },
+        "columns": [
+          { data: null },
+          { data: 'fromdate' },
+          { data: 'todate' },
+          { data: 'actions' }
+        ],
+        "drawCallback": function () {
+          $(".edit-button-period").on('click', function () {
+            var pid = $(this).attr("data-id");
+            $.ajax({
+              url: "/admin/getRatingPeriod/",
+              type: "POST",
+              data: { 'pId': pid },
+              dataType: "json",
+              success: function (data) {
+                if (data.status == true) {
+                  $('input[name="data_id"]').val(data.dates[0]._id);
+                  $('input[name="fromdate"]').val(data.dates[0].fromdate);
+                  $('input[name="todate"]').val(data.dates[0].todate);
+                }
+              }
+            });
+          });
+          $(".delete-button-period").on('click', function () {
+            $('#period-modal-default').modal('show');
+            var deleteId = $(this).attr("data-id");
+            $('.delete-action-period').attr("data-id", deleteId);
+          });
+        }
+      });
+      periodTable.on('order.dt search.dt', function () {
+        periodTable.column(0, { search: 'applied', order: 'applied' }).nodes().each(function (cell, i) {
+          cell.innerHTML = i + 1;
+        });
+      }).draw();
+
+
+      $('.delete-action-emp').on('click', function () {
+        var deleteId = $(this).attr("data-id");
+        $.ajax({
+          url: "/employee/delete/",
+          type: "POST",
+          data: { 'deleteId': deleteId },
+          dataType: "json",
+          success: function (data) {
+            $("#emp-modal-default").modal("hide");
+
+            if (data.status == true) {
+              $('.alert.alert-success').html("Data deleted successfully");
+              $('.alert.alert-success').fadeIn();
+              EmpTable.ajax.reload();
+            }
+            else {
+              $('.alert.alert-danger').html("Error! Data not deleted.");
+              $('.alert.alert-danger').fadeIn();
+            }
+            setTimeout(() => { $('.alert').fadeOut(); }, 6000)
+          }
+        })
+      });
+      $('.delete-action-period').on('click', function () {
+        var deleteId = $(this).attr("data-id");
+        $.ajax({
+          url: "/admin/deletePeriod/",
+          type: "POST",
+          data: { 'deleteId': deleteId },
+          dataType: "json",
+          success: function (data) {
+            $("#period-modal-default").modal("hide");
+
+            if (data.status == true) {
+              $('.alert.alert-success').html("Data deleted successfully");
+              $('.alert.alert-success').fadeIn();
+              periodTable.ajax.reload();
+            }
+            else {
+              $('.alert.alert-danger').html("Error! Data not deleted.");
+              $('.alert.alert-danger').fadeIn();
+            }
+            setTimeout(() => { $('.alert').fadeOut(); }, 6000)
+          }
+        })
+      });
+
+    });
+
+
+  </script>
+</body>
+
+</html>

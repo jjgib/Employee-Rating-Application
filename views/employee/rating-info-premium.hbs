@@ -1,0 +1,101 @@
+<div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <div class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-6">
+                    <h1 class="m-0">Rating Status</h1>
+                </div><!-- /.col -->
+                <div class="col-sm-6">
+                    <ol class="breadcrumb float-sm-right">
+                        <li class="breadcrumb-item"><a href="/dashboard">Home</a></li>
+                        <li class="breadcrumb-item active">Compare Ratings</li>
+                    </ol>
+                </div><!-- /.col -->
+
+            </div><!-- /.row -->
+        </div><!-- /.container-fluid -->
+    </div>
+    <!-- /.content-header -->
+
+    <section class="content">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="card-title"><strong>Name</strong>: {{empData.[0].firstName}}
+                                {{empData.[0].lastName}} &nbsp;&nbsp;
+                                <strong>Employee ID</strong>:{{empData.[0].employee_id}}
+                            </h3>
+                        </div>
+                        <!-- /.card-header -->
+                        <div class="card-body rating-graph-area">
+                            <form>
+                                <div class="form-row">
+                                    <div class="col">
+                                        <label>Date Slot 1:</label>
+                                        <select id="dateSlot1" class="">
+                                            <option value="">Select date slot</option>
+                                            {{#each allDateSlots}}
+                                            <option value="{{_id}}">{{fromdate}} - {{todate}}</option>
+                                            {{/each}}
+                                        </select>
+                                    </div>
+                                    <div class="col">
+                                        <label>Date Slot 2:</label>
+                                        <select id="dateSlot2" class="">
+                                            <option value="">Select date slot</option>
+                                        </select>
+                                    </div>
+                                    <div class="col">
+                                        <button type="button" id="compare-button"
+                                            class="btn btn-primary btn-sm">Compare</button>
+                                    </div>
+                                </div>
+                            </form>
+                            <div class="chart">
+                                <!---<canvas id="ratingChart" style=""></canvas>--->
+
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="card">
+                                <div class="card-header">
+                                    <h3 class="card-title">HR Manager Rating</h3>
+                                </div>
+                                <div class="card-body">
+                                    <canvas id="hrRatingChart" style=""></canvas>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="card">
+                                <div class="card-header">
+                                    <h3 class="card-title">Self Rating</h3>
+                                </div>
+                                <div class="card-body">
+                                    <canvas id="selfRatingChart" style=""></canvas>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="card">
+                                <div class="card-header">
+                                    <h3 class="card-title">Coworkers Rating</h3>
+                                </div>
+                                <div class="card-body">
+                                    <canvas id="coworkerRatingChart" style=""></canvas>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+</div>

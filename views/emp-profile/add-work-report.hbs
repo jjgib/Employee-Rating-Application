@@ -1,0 +1,100 @@
+<div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <div class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-6">
+                    <h1 class="m-0">Add work report</h1>
+                </div><!-- /.col -->
+                <div class="col-sm-6">
+                    <ol class="breadcrumb float-sm-right">
+                        <li class="breadcrumb-item"><a href="/rating/dashboard">Home</a></li>
+                        <li class="breadcrumb-item active">Add work report</li>
+                    </ol>
+                </div><!-- /.col -->
+
+            </div><!-- /.row -->
+        </div><!-- /.container-fluid -->
+    </div>
+    <!-- /.content-header -->
+
+    <section class="content">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card card-primary">
+                        <div class="card-header">
+                            <h3 class="card-title">Add Report </h3>
+                        </div>
+                        <form id="reportForm">
+                            <div class="card-body">
+                                <div class="col-md-12">
+                                    <div style="display: none;" class="alert alert-success"></div>
+                                    <div style="display: none;" class="alert alert-danger"></div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label for="">Title</label>
+                                            <input type="text" name="title" class="form-control" id="title"
+                                                placeholder="" value="">
+                                            <input type="hidden" name="employee_id" value="{{userData._id}}">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-8">
+                                        <div class="form-group">
+                                            <label for="">Description</label>
+                                            <textarea type="text" name="desc" class="form-control" id="desc"
+                                                placeholder="" rows="10"></textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                                <button type="submit" class="btn btn-primary">Submit</button>
+                            </div>
+                            <div class="card-footer">
+                            </div>
+                        </form>
+                    </div>
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="card-title">Work report list </h3>
+                        </div>
+                        <!-- /.card-header -->
+                        <div class="card-body">
+                            <div class="row justify-content-end">
+                                <div class="col-4">
+                                    <ul class="report-status-info">
+                                        <li>
+                                            <i class="v-icon green fas fa-check-circle"></i> Report is reviewed
+                                        </li>
+                                        <li>
+                                            <i class="v-icon blue fas fa-check-circle"></i> Report is submitted but not
+                                            Reviewed
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <table id="workreport-list-table" class="table table-bordered table-hover">
+                                <thead>
+                                    <tr>
+                                        <th width="5%">Sl No.</th>
+                                        <th>Title</th>
+                                        <th>Description</th>
+                                        <th>Date</th>
+                                        <th>Status</th>
+                                        <th>Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                </tbody>
+                            </table>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>

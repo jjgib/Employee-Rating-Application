@@ -1,0 +1,307 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta name="robots" content="noindex, nofollow" />
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+
+    <!-- Google Font: Source Sans Pro -->
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=PT+Serif+Caption&display=swap" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="/plugins/fontawesome-free/css/all.min.css">
+    <!-- Ionicons -->
+    <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+    <link rel="stylesheet" href="/plugins/select2/css/select2.min.css">
+
+    <link href="../../stylesheets/front-end.css" rel="stylesheet">
+
+
+    <title>{{title}}</title>
+</head>
+
+<body>
+    {{#if dashboardHeader}}
+    {{>header}}
+    {{/if}}
+
+    {{{body}}}
+
+    {{#if dashboardHeader}}
+    {{>footer}}
+    {{/if}}
+
+    <!---<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>--->
+    <!-- jQuery -->
+    <script src="/plugins/jquery/jquery.min.js"></script>
+    <!-- Bootstrap 4 -->
+    <script src="/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="/plugins/select2/js/select2.full.min.js"></script>
+    <!-- jquery-validation -->
+    <script src="/plugins/jquery-validation/jquery.validate.min.js"></script>
+    <script src="/plugins/jquery-validation/additional-methods.min.js"></script>
+    <script>
+
+
+        $("#employee_id").select2({
+            minimumInputLength: 2,
+            tags: [],
+            ajax: {
+                url: "/rating/getEmployee",
+                dataType: "json",
+                type: "GET",
+                quietMillis: 50,
+                data: function (term) {
+                    return {
+                        term: term.term
+                    };
+                },
+                processResults: function (data) {
+                    return {
+                        results: data.response
+                    };
+                }
+            }
+        });
+        $("#coworker_id").select2({
+            minimumInputLength: 2,
+            tags: [],
+            ajax: {
+                url: "/rating/getCoworkers",
+                dataType: "json",
+                type: "GET",
+                quietMillis: 50,
+                data: function (term) {
+                    return {
+                        term: term.term
+                    };
+                },
+                processResults: function (data) {
+                    return {
+                        results: data.response
+                    };
+                }
+            }
+        });
+
+        $("#rating_form_hr").validate({
+            rules: {
+                employee_id: {
+                    required: true
+                },
+                hr_email: {
+                    required: true,
+                    email: true
+                }
+
+            },
+            messages: {
+                hr_email: {
+                    required: "Please enter email"
+                }
+            },
+            errorElement: 'span',
+            errorPlacement: function (error, element) {
+                error.addClass('invalid-feedback');
+                element.closest('.form-group').append(error);
+            },
+            highlight: function (element, errorClass, validClass) {
+                $(element).addClass('is-invalid');
+            },
+            unhighlight: function (element, errorClass, validClass) {
+                $(element).removeClass('is-invalid');
+            },
+            submitHandler: function () {
+                $.ajax({
+                    url: "/rating/save-hr-rating",
+                    type: "POST",
+                    data: $("#rating_form_hr").serialize(),
+                    dataType: "json",
+                    success: function (data) {
+                        if (data.status == 1) {
+                            $('.alert.alert-success').html("Data saved successfully.");
+                            $('.alert.alert-success').fadeIn();
+                            $("#rating_form_hr").trigger("reset");
+                            $("#employee_id").val('').trigger('change');
+                            $(window).scrollTop(0);
+                        }
+                        else if (data.status == 2) {
+                            $('.alert.alert-danger').html(data.message);
+                            $('.alert.alert-danger').fadeIn();
+                            $("#rating_form_hr").trigger("reset");
+                            $("#employee_id").val('').trigger('change');
+                            $(window).scrollTop(0);
+                        }
+                        else {
+                            $('.alert.alert-danger').html(data.message);
+                            $('.alert.alert-danger').fadeIn();
+                            $(window).scrollTop(0);
+                        }
+                        setTimeout(() => { $('.alert').fadeOut(); }, 6000);
+                    }
+                });
+
+            }
+        });
+
+
+        $("#emp-login").validate({
+            rules: {
+                emp_id: {
+                    required: true
+                },
+                emp_dob: {
+                    required: true
+                }
+
+            },
+            messages: {
+                emp_id: {
+                    required: "Please enter employee id"
+                }
+            },
+            errorElement: 'span',
+            errorPlacement: function (error, element) {
+                error.addClass('invalid-feedback');
+                element.closest('.form-group').append(error);
+            },
+            highlight: function (element, errorClass, validClass) {
+                $(element).addClass('is-invalid');
+            },
+            unhighlight: function (element, errorClass, validClass) {
+                $(element).removeClass('is-invalid');
+            },
+            submitHandler: function () {
+
+                $("#emp-login").submit();
+
+            }
+        });
+
+        $("#emp_self_rating_form").validate({
+            rules: {
+                /* emp_name: {
+                     required: true
+                 },*/
+                employee_id: {
+                    required: true
+                }
+
+            },
+            messages: {
+                emp_name: {
+                    required: "Login again"
+                }
+            },
+            errorElement: 'span',
+            errorPlacement: function (error, element) {
+                error.addClass('invalid-feedback');
+                element.closest('.form-group').append(error);
+            },
+            highlight: function (element, errorClass, validClass) {
+                $(element).addClass('is-invalid');
+            },
+            unhighlight: function (element, errorClass, validClass) {
+                $(element).removeClass('is-invalid');
+            },
+            submitHandler: function () {
+                $.ajax({
+                    url: "/rating/save-self-rating",
+                    type: "POST",
+                    data: $("#emp_self_rating_form").serialize(),
+                    dataType: "json",
+                    success: function (data) {
+                        if (data.status == 1) {
+                            $('.alert.alert-success').html("Data saved successfully");
+                            $('.alert.alert-success').fadeIn();
+                            $("#emp_self_rating_form").trigger("reset");
+                            $(window).scrollTop(0);
+                        }
+                        else if (data.status == 2) {
+                            $('.alert.alert-danger').html(data.message);
+                            $('.alert.alert-danger').fadeIn();
+                            $("#emp_self_rating_form").trigger("reset");
+                            $(window).scrollTop(0);
+                        }
+                        else {
+                            $('.alert.alert-danger').html(data.message);
+                            $('.alert.alert-danger').fadeIn();
+                            $(window).scrollTop(0);
+                        }
+                        setTimeout(() => { $('.alert').fadeOut(); }, 6000);
+                    }
+                })
+
+            }
+        });
+        $("#emp_coworker_rating_form").validate({
+            rules: {
+                coworker_id: {
+                    required: true
+                },
+                employee_id: {
+                    required: true
+                }
+
+            },
+            messages: {
+                emp_name: {
+                    required: "Login again"
+                }
+            },
+            errorElement: 'span',
+            errorPlacement: function (error, element) {
+                error.addClass('invalid-feedback');
+                element.closest('.form-group').append(error);
+            },
+            highlight: function (element, errorClass, validClass) {
+                $(element).addClass('is-invalid');
+            },
+            unhighlight: function (element, errorClass, validClass) {
+                $(element).removeClass('is-invalid');
+            },
+            submitHandler: function () {
+                $.ajax({
+                    url: "/rating/save-coworker-rating",
+                    type: "POST",
+                    data: $("#emp_coworker_rating_form").serialize(),
+                    dataType: "json",
+                    success: function (data) {
+                        if (data.status == 1) {
+                            $('.alert.alert-success').html("Data saved successfully");
+                            $('.alert.alert-success').fadeIn();
+                            $("#emp_coworker_rating_form").trigger("reset");
+                            $("#coworker_id").val('').trigger('change');
+                            $(window).scrollTop(0);
+                        }
+                        else if (data.status == 2) {
+                            $('.alert.alert-danger').html(data.message);
+                            $('.alert.alert-danger').fadeIn();
+                            $("#emp_coworker_rating_form").trigger("reset");
+                            $("#coworker_id").val('').trigger('change');
+                            $(window).scrollTop(0);
+                        }
+                        else {
+                            $('.alert.alert-danger').html(data.message);
+                            $('.alert.alert-danger').fadeIn();
+                            $(window).scrollTop(0);
+                        }
+                        setTimeout(() => { $('.alert').fadeOut(); }, 6000);
+                    }
+                })
+
+            }
+        });
+    </script>
+
+</body>
+
+</html>

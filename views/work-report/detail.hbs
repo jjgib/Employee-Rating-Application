@@ -1,0 +1,60 @@
+<div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <div class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-6">
+                    <h1 class="m-0">Work report detail</h1>
+                </div><!-- /.col -->
+                <div class="col-sm-6">
+                    <ol class="breadcrumb float-sm-right">
+                        <li class="breadcrumb-item"><a href="/admin/dashboard">Home</a></li>
+                        <li class="breadcrumb-item active">Work report detail</li>
+                    </ol>
+                </div><!-- /.col -->
+
+            </div><!-- /.row -->
+        </div><!-- /.container-fluid -->
+    </div>
+    <!-- /.content-header -->
+
+    <section class="content">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="card-title"><strong>Employee Name :</strong>
+                                {{rData.[0].name}}</h3>
+                        </div>
+                        <div class="card-header">
+                            <h3 class="card-title"><strong>Title :</strong>
+                                {{rData.[0].title}}</h3>
+                        </div>
+                        <div class="card-header">
+                            <h3 class="card-title"><strong>Submit date :</strong>
+                                {{rData.[0].createdDate}}</h3>
+                        </div>
+                        <!-- /.card-header -->
+                        <div class="card-header">
+                            <h3 class="card-title"><strong>Description :</strong>
+                                {{rData.[0].description}}</h3>
+                        </div>
+                        <div class="card-header">
+                            <h3 class="card-title"><strong>Review Status :</strong>
+
+                                <div
+                                    class="custom-control custom-switch custom-switch-off-danger custom-switch-on-success">
+                                    <input type="checkbox" class="custom-control-input" data-id="{{rData.[0]._id}}"
+                                        id="customSwitch1" {{rData.[0].status}}>
+                                    <label class="custom-control-label" for="customSwitch1"></label>
+                                </div>
+                            </h3>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>

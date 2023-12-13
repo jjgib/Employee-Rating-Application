@@ -1,0 +1,219 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta name="robots" content="noindex, nofollow" />
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <!---<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">--->
+
+    <!-- Google Font: Source Sans Pro -->
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="/plugins/fontawesome-free/css/all.min.css">
+    <!-- daterange picker -->
+    <link rel="stylesheet" href="/plugins/daterangepicker/daterangepicker.css">
+    <!-- iCheck for checkboxes and radio inputs -->
+    <link rel="stylesheet" href="/plugins/icheck-bootstrap/icheck-bootstrap.min.css">
+    <!-- Ionicons -->
+    <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+    <!-- Tempusdominus Bootstrap 4 -->
+    <!---<link rel="stylesheet" href="/plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css">--->
+    <!-- DataTables -->
+    <!---<link rel="stylesheet" href="/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
+    <link rel="stylesheet" href="/plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
+    <link rel="stylesheet" href="/plugins/datatables-buttons/css/buttons.bootstrap4.min.css">--->
+
+    <!-- Theme style -->
+    <link rel="stylesheet" href="/stylesheets/adminlte.min.css">
+
+    <link href="/stylesheets/style.css" rel="stylesheet">
+    <title>{{title}} - Rating App</title>
+</head>
+
+<body>
+    {{#if dashboardHeader}}
+    {{>header}}
+    {{/if}}
+
+    {{{body}}}
+
+    {{#if dashboardHeader}}
+    {{>footer}}
+    {{/if}}
+
+    <!---<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>--->
+    <!-- jQuery -->
+    <script src="/plugins/jquery/jquery.min.js"></script>
+    <!-- Bootstrap 4 -->
+    <script src="/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <script src="/plugins/moment/moment.min.js"></script>
+    <script src="/plugins/inputmask/jquery.inputmask.min.js"></script>
+    <!-- date-range-picker -->
+    <script src="/plugins/daterangepicker/daterangepicker.js"></script>
+    <!-- Tempusdominus Bootstrap 4 -->
+    <!---<script src="/plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js"></script>--->
+    <!-- jquery-validation -->
+    <script src="/plugins/jquery-validation/jquery.validate.min.js"></script>
+    <script src="/plugins/jquery-validation/additional-methods.min.js"></script>
+
+    <!-- DataTables  & Plugins -->
+    <!---<script src="/plugins/datatables/jquery.dataTables.min.js"></script>
+    <script src="/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
+    <script src="/plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
+    <script src="/plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>-->
+
+    <script src="/plugins/chart.js/Chart.min.js"></script>
+
+    <!-- AdminLTE App -->
+    <script src="/js/adminlte.js"></script>
+
+    <script type="text/javascript">
+        var eID = document.URL.split("/").pop();
+
+
+        const labels = [
+            'q1',
+            'q2',
+            'q3',
+            'q4',
+            'q5',
+            'q6',
+            'q7',
+            'q8',
+            'q9',
+            'q10',
+            'q11',
+            'q12',
+            'q13',
+            'q14',
+            'q15',
+            'q16',
+            'q17', 'q18', 'q19', 'q20'
+        ];
+
+        const data = {
+            labels: labels,
+            datasets: [{
+                label: 'HR rating',
+                backgroundColor: 'transparent',
+                borderColor: 'rgb(255, 99, 132)',
+                //data: [0, 10, 5, 2, 20, 30, 45],
+            },
+            {
+                label: 'self rating',
+                backgroundColor: 'transparent',
+                borderColor: 'green',
+                //data: [3, 12, 8, 5, 28, 32, 48],
+            },
+            {
+                label: 'coworker rating',
+                backgroundColor: 'transparent',
+                borderColor: 'blue',
+                //data: [4, 14, 9, 6, 30, 33, 49],
+            }]
+        };
+
+        const config = {
+            type: 'line',
+            data: data,
+            options: {
+                elements: {
+                    line: {
+                        tension: 0
+                    }
+                },
+                scales: {
+                    yAxes: [{
+                        display: true,
+                        ticks: {
+                            beginAtZero: true,
+                            steps: 1,
+                            stepValue: 1,
+                            max: 10
+                        }
+                    }]
+                }
+            }
+
+        };
+        const myChart = new Chart(
+            document.getElementById('ratingChart').getContext('2d'),
+            config
+        );
+
+        $.ajax({
+            url: "/employee/rating-info/",
+            type: "POST",
+            data: { 'ID': eID },
+            dataType: "json",
+            success: function (data) {
+                console.log(data);
+                /*var month = [];
+                var month_hrRating = data[0].hr_rating_data.map((month, index) => {
+                    return month.createdDateTime;
+                });
+                var month_selfRating = data[0].self_rating_data.map((month, index) => {
+                    return month.createdDateTime;
+                });
+                var month_coRating = data[0].coworker_rating_data.map((month, index) => {
+                    return month.createdDateTime;
+                });
+                if (month_hrRating.length > 0) {
+                    month.push(...month_hrRating);
+                }
+                if (month_selfRating.length > 0) {
+                    month.push(...month_selfRating);
+                }
+                if (month_coRating.length > 0) {
+                    month.push(...month_coRating);
+                }*/
+
+                /*var hr_rating_data = data[0].hr_rating_data.map((value, index) => {
+                    return value.total_rate;
+                });
+                var self_rating_data = data[0].self_rating_data.map((value, index) => {
+                    return value.total_rate;
+                });
+                */
+                if (data[0].hr_rating_data.length > 0) {
+                    var hr_rating_data = Object.values(data[0].hr_rating_data[0]);
+                    hr_rating_data = hr_rating_data.map(ele => ele.toFixed(2));
+                }
+                else {
+                    var hr_rating_data = [];
+                }
+
+                if (data[0].self_rating_data.length > 0) {
+                    var self_rating_data = Object.values(data[0].self_rating_data[0]);
+                    self_rating_data = self_rating_data.map(ele => ele.toFixed(2));
+                }
+                else {
+                    var self_rating_data = [];
+                }
+
+                if (data[0].coworker_rating_data.length > 0) {
+                    var cowrk_rating_data = Object.values(data[0].coworker_rating_data[0]);
+                    cowrk_rating_data = cowrk_rating_data.map(ele => ele.toFixed(2));
+                }
+                else {
+                    var cowrk_rating_data = [];
+                }
+
+
+                //myChart.config.data.labels = month;
+                myChart.config.data.datasets[0].data = hr_rating_data;
+                myChart.config.data.datasets[1].data = self_rating_data;
+                myChart.config.data.datasets[2].data = cowrk_rating_data;
+                myChart.update();
+            }
+        });
+    </script>
+</body>
+
+</html>

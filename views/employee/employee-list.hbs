@@ -1,0 +1,139 @@
+<div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <div class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-6">
+                    <h1 class="m-0">Employee List</h1>
+                </div><!-- /.col -->
+                <div class="col-sm-6">
+                    <ol class="breadcrumb float-sm-right">
+                        <li class="breadcrumb-item"><a href="/dashboard">Home</a></li>
+                        <li class="breadcrumb-item active">Employee List</li>
+                    </ol>
+                </div><!-- /.col -->
+
+            </div><!-- /.row -->
+        </div><!-- /.container-fluid -->
+    </div>
+    <!-- /.content-header -->
+
+    <section class="content">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="card-title">List </h3>
+                        </div>
+                        <!-- /.card-header -->
+                        <div class="card-body">
+                            <div class="alert alert-success" style="display: none;"></div>
+                            <div class="alert alert-danger" style="display: none;"></div>
+                            <table id="emp-list-table" class="table table-bordered table-hover">
+                                <thead>
+                                    <tr>
+                                        <th></th>
+                                        <th>First name</th>
+                                        <th>Last name</th>
+                                        <th>Email</th>
+                                        <th>Phone</th>
+                                        <th>Join Date</th>
+                                        <th>Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                </tbody>
+                            </table>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+
+
+<div class="modal fade" id="emp-modal-default">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Delete</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p>Do you want to delete ?</p>
+            </div>
+            <div class="modal-footer justify-content-between">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                <button type="button" data-id="" class="btn btn-primary delete-action-emp">Yes</button>
+            </div>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div>
+<div class="modal fade" id="emp-details-modal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title"><i class="ion ion-person"></i> Employee Details</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-md-3"><label>Employee ID :</label></div>
+                    <div class="col-md-9 employee-id"></div>
+                </div>
+                <div class="row">
+                    <div class="col-md-3"><label>First Name :</label></div>
+                    <div class="col-md-9 first-name"></div>
+                </div>
+                <div class="row">
+                    <div class="col-md-3"><label>Last Name :</label></div>
+                    <div class="col-md-9 last-name"></div>
+                </div>
+                <div class="row">
+                    <div class="col-md-3"><label>Street :</label></div>
+                    <div class="col-md-9 street"></div>
+                </div>
+                <div class="row">
+                    <div class="col-md-3"><label>Zipcode :</label></div>
+                    <div class="col-md-9 zipcode"></div>
+                </div>
+                <div class="row">
+                    <div class="col-md-3"><label>Country :</label></div>
+                    <div class="col-md-9 country"></div>
+                </div>
+                <div class="row">
+                    <div class="col-md-3"><label>Email ID :</label></div>
+                    <div class="col-md-9 email-id"></div>
+                </div>
+                <div class="row">
+                    <div class="col-md-3"><label>Phone :</label></div>
+                    <div class="col-md-9 phone"></div>
+                </div>
+                <div class="row">
+                    <div class="col-md-3"><label>Date of Birth :</label></div>
+                    <div class="col-md-9 dob"></div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-3"><label>Join date :</label></div>
+                    <div class="col-md-9 join-date"></div>
+                </div>
+            </div>
+            <div class="modal-footer justify-content-right">
+                <!--<button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>--->
+            </div>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div>
+<!-- /.modal -->

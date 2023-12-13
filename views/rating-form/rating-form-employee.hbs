@@ -1,0 +1,1604 @@
+<!---https://cwattrus.medium.com/how-we-designed-our-developer-experience-survey-5ea9364e5db5--->
+<!--
+    Custom radio button design
+https://www.youtube.com/watch?v=qDxcQHecxMY
+-->
+
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="rating-form-wrap">
+                <ul class="breadcrumb forms">
+                    <li><a href="/rating/dashboard">Dashboard</a></li>
+                    <li>></li>
+                    <li>Form</li>
+                </ul>
+                <h1>Employee rating form (Self)</h1>
+                <div style="display: none;" class="alert alert-success"></div>
+                <div style="display: none;" class="alert alert-danger"></div>
+                <form id="emp_self_rating_form">
+                    <div class="row">
+                        <fieldset class="col-md-6 form-group">
+                            <span>Name:</span><br>
+                            <input type="text" name="emp_name" class="form-input-bx form-control"
+                                value="{{userData.firstName}} {{userData.lastName}}" readonly>
+                            <input type="hidden" name="employee_id" value="{{userData._id}}">
+                            <span class="logout-link">(<a href="/rating/logout">Logout</a>)</span>
+                        </fieldset>
+                    </div>
+                    <h3 class="pt-3">Productivity</h3>
+                    <fieldset class="form-group">
+                        <span>Stands behind the quality of work:</span>
+                        <div class="dbox_container">
+                            <input type="radio" name="q1" id="q1_1" class="hidebx" value="1" required>
+                            <label for="q1_1" class="lbl-radio">
+                                <div class="dbox">
+                                    1
+                                </div>
+                            </label>
+
+                            <input type="radio" name="q1" id="q1_2" class="hidebx" value="2">
+                            <label for="q1_2" class="lbl-radio">
+                                <div class="dbox">
+                                    2
+                                </div>
+                            </label>
+
+                            <input type="radio" name="q1" id="q1_3" class="hidebx" value="3">
+                            <label for="q1_3" class="lbl-radio">
+                                <div class="dbox">
+                                    3
+                                </div>
+                            </label>
+
+                            <input type="radio" name="q1" id="q1_4" class="hidebx" value="4">
+                            <label for="q1_4" class="lbl-radio">
+                                <div class="dbox">
+                                    4
+                                </div>
+                            </label>
+
+                            <input type="radio" name="q1" id="q1_5" class="hidebx" value="5">
+                            <label for="q1_5" class="lbl-radio">
+                                <div class="dbox">
+                                    5
+                                </div>
+                            </label>
+
+                            <input type="radio" name="q1" id="q1_6" class="hidebx" value="6">
+                            <label for="q1_6" class="lbl-radio">
+                                <div class="dbox">
+                                    6
+                                </div>
+                            </label>
+
+                            <input type="radio" name="q1" id="q1_7" class="hidebx" value="7">
+                            <label for="q1_7" class="lbl-radio">
+                                <div class="dbox">
+                                    7
+                                </div>
+                            </label>
+
+                            <input type="radio" name="q1" id="q1_8" class="hidebx" value="8">
+                            <label for="q1_8" class="lbl-radio">
+                                <div class="dbox">
+                                    8
+                                </div>
+                            </label>
+                            <input type="radio" name="q1" id="q1_9" class="hidebx" value="9">
+                            <label for="q1_9" class="lbl-radio">
+                                <div class="dbox">
+                                    9
+                                </div>
+                            </label>
+                            <input type="radio" name="q1" id="q1_10" class="hidebx" value="10">
+                            <label for="q1_10" class="lbl-radio">
+                                <div class="dbox">
+                                    10
+                                </div>
+                            </label>
+                            <input type="radio" name="q1" id="q1_11" class="hidebx" value="0">
+                            <label for="q1_11" class="lbl-radio">
+                                <div class="dbox">
+                                    NA
+                                </div>
+                            </label>
+                        </div>
+                    </fieldset>
+                    <fieldset class="form-group">
+                        <span>Take his work seriously:</span>
+                        <div class="dbox_container">
+                            <input type="radio" name="q2" id="q2_1" class="hidebx" value="1" required>
+                            <label for="q2_1" class="lbl-radio">
+                                <div class="dbox">
+                                    1
+                                </div>
+                            </label>
+
+                            <input type="radio" name="q2" id="q2_2" class="hidebx" value="2">
+                            <label for="q2_2" class="lbl-radio">
+                                <div class="dbox">
+                                    2
+                                </div>
+                            </label>
+
+                            <input type="radio" name="q2" id="q2_3" class="hidebx" value="3">
+                            <label for="q2_3" class="lbl-radio">
+                                <div class="dbox">
+                                    3
+                                </div>
+                            </label>
+
+                            <input type="radio" name="q2" id="q2_4" class="hidebx" value="4">
+                            <label for="q2_4" class="lbl-radio">
+                                <div class="dbox">
+                                    4
+                                </div>
+                            </label>
+
+                            <input type="radio" name="q2" id="q2_5" class="hidebx" value="5">
+                            <label for="q2_5" class="lbl-radio">
+                                <div class="dbox">
+                                    5
+                                </div>
+                            </label>
+
+                            <input type="radio" name="q2" id="q2_6" class="hidebx" value="6">
+                            <label for="q2_6" class="lbl-radio">
+                                <div class="dbox">
+                                    6
+                                </div>
+                            </label>
+
+                            <input type="radio" name="q2" id="q2_7" class="hidebx" value="7">
+                            <label for="q2_7" class="lbl-radio">
+                                <div class="dbox">
+                                    7
+                                </div>
+                            </label>
+
+                            <input type="radio" name="q2" id="q2_8" class="hidebx" value="8">
+                            <label for="q2_8" class="lbl-radio">
+                                <div class="dbox">
+                                    8
+                                </div>
+                            </label>
+                            <input type="radio" name="q2" id="q2_9" class="hidebx" value="9">
+                            <label for="q2_9" class="lbl-radio">
+                                <div class="dbox">
+                                    9
+                                </div>
+                            </label>
+                            <input type="radio" name="q2" id="q2_10" class="hidebx" value="10">
+                            <label for="q2_10" class="lbl-radio">
+                                <div class="dbox">
+                                    10
+                                </div>
+                            </label>
+                            <input type="radio" name="q2" id="q2_11" class="hidebx" value="0">
+                            <label for="q2_11" class="lbl-radio">
+                                <div class="dbox">
+                                    NA
+                                </div>
+                            </label>
+                        </div>
+                    </fieldset>
+                    <fieldset class="form-group">
+                        <span>Complete or submit work that can trust:</span>
+                        <div class="dbox_container">
+                            <input type="radio" name="q3" id="q3_1" class="hidebx" value="1" required>
+                            <label for="q3_1" class="lbl-radio">
+                                <div class="dbox">
+                                    1
+                                </div>
+                            </label>
+
+                            <input type="radio" name="q3" id="q3_2" class="hidebx" value="2">
+                            <label for="q3_2" class="lbl-radio">
+                                <div class="dbox">
+                                    2
+                                </div>
+                            </label>
+
+                            <input type="radio" name="q3" id="q3_3" class="hidebx" value="3">
+                            <label for="q3_3" class="lbl-radio">
+                                <div class="dbox">
+                                    3
+                                </div>
+                            </label>
+
+                            <input type="radio" name="q3" id="q3_4" class="hidebx" value="4">
+                            <label for="q3_4" class="lbl-radio">
+                                <div class="dbox">
+                                    4
+                                </div>
+                            </label>
+
+                            <input type="radio" name="q3" id="q3_5" class="hidebx" value="5">
+                            <label for="q3_5" class="lbl-radio">
+                                <div class="dbox">
+                                    5
+                                </div>
+                            </label>
+
+                            <input type="radio" name="q3" id="q3_6" class="hidebx" value="6">
+                            <label for="q3_6" class="lbl-radio">
+                                <div class="dbox">
+                                    6
+                                </div>
+                            </label>
+
+                            <input type="radio" name="q3" id="q3_7" class="hidebx" value="7">
+                            <label for="q3_7" class="lbl-radio">
+                                <div class="dbox">
+                                    7
+                                </div>
+                            </label>
+
+                            <input type="radio" name="q3" id="q3_8" class="hidebx" value="8">
+                            <label for="q3_8" class="lbl-radio">
+                                <div class="dbox">
+                                    8
+                                </div>
+                            </label>
+                            <input type="radio" name="q3" id="q3_9" class="hidebx" value="9">
+                            <label for="q3_9" class="lbl-radio">
+                                <div class="dbox">
+                                    9
+                                </div>
+                            </label>
+                            <input type="radio" name="q3" id="q3_10" class="hidebx" value="10">
+                            <label for="q3_10" class="lbl-radio">
+                                <div class="dbox">
+                                    10
+                                </div>
+                            </label>
+                            <input type="radio" name="q3" id="q3_11" class="hidebx" value="0">
+                            <label for="q3_11" class="lbl-radio">
+                                <div class="dbox">
+                                    NA
+                                </div>
+                            </label>
+                        </div>
+                    </fieldset>
+                    <fieldset class="form-group">
+                        <span>Gets the job done in a reasonable time:</span>
+                        <div class="dbox_container">
+                            <input type="radio" name="q4" id="q4_1" class="hidebx" value="1" required>
+                            <label for="q4_1" class="lbl-radio">
+                                <div class="dbox">
+                                    1
+                                </div>
+                            </label>
+
+                            <input type="radio" name="q4" id="q4_2" class="hidebx" value="2">
+                            <label for="q4_2" class="lbl-radio">
+                                <div class="dbox">
+                                    2
+                                </div>
+                            </label>
+
+                            <input type="radio" name="q4" id="q4_3" class="hidebx" value="3">
+                            <label for="q4_3" class="lbl-radio">
+                                <div class="dbox">
+                                    3
+                                </div>
+                            </label>
+
+                            <input type="radio" name="q4" id="q4_4" class="hidebx" value="4">
+                            <label for="q4_4" class="lbl-radio">
+                                <div class="dbox">
+                                    4
+                                </div>
+                            </label>
+
+                            <input type="radio" name="q4" id="q4_5" class="hidebx" value="5">
+                            <label for="q4_5" class="lbl-radio">
+                                <div class="dbox">
+                                    5
+                                </div>
+                            </label>
+
+                            <input type="radio" name="q4" id="q4_6" class="hidebx" value="6">
+                            <label for="q4_6" class="lbl-radio">
+                                <div class="dbox">
+                                    6
+                                </div>
+                            </label>
+
+                            <input type="radio" name="q4" id="q4_7" class="hidebx" value="7">
+                            <label for="q4_7" class="lbl-radio">
+                                <div class="dbox">
+                                    7
+                                </div>
+                            </label>
+
+                            <input type="radio" name="q4" id="q4_8" class="hidebx" value="8">
+                            <label for="q4_8" class="lbl-radio">
+                                <div class="dbox">
+                                    8
+                                </div>
+                            </label>
+                            <input type="radio" name="q4" id="q4_9" class="hidebx" value="9">
+                            <label for="q4_9" class="lbl-radio">
+                                <div class="dbox">
+                                    9
+                                </div>
+                            </label>
+                            <input type="radio" name="q4" id="q4_10" class="hidebx" value="10">
+                            <label for="q4_10" class="lbl-radio">
+                                <div class="dbox">
+                                    10
+                                </div>
+                            </label>
+                            <input type="radio" name="q4" id="q4_11" class="hidebx" value="0">
+                            <label for="q4_11" class="lbl-radio">
+                                <div class="dbox">
+                                    NA
+                                </div>
+                            </label>
+                        </div>
+                    </fieldset>
+                    <h3 class="pt-3">Dependability</h3>
+                    <fieldset class="form-group">
+                        <span>Show up for work on time:</span>
+                        <div class="dbox_container">
+                            <input type="radio" name="q5" id="q5_1" class="hidebx" value="1" required>
+                            <label for="q5_1" class="lbl-radio">
+                                <div class="dbox">
+                                    1
+                                </div>
+                            </label>
+
+                            <input type="radio" name="q5" id="q5_2" class="hidebx" value="2">
+                            <label for="q5_2" class="lbl-radio">
+                                <div class="dbox">
+                                    2
+                                </div>
+                            </label>
+
+                            <input type="radio" name="q5" id="q5_3" class="hidebx" value="3">
+                            <label for="q5_3" class="lbl-radio">
+                                <div class="dbox">
+                                    3
+                                </div>
+                            </label>
+
+                            <input type="radio" name="q5" id="q5_4" class="hidebx" value="4">
+                            <label for="q5_4" class="lbl-radio">
+                                <div class="dbox">
+                                    4
+                                </div>
+                            </label>
+
+                            <input type="radio" name="q5" id="q5_5" class="hidebx" value="5">
+                            <label for="q5_5" class="lbl-radio">
+                                <div class="dbox">
+                                    5
+                                </div>
+                            </label>
+
+                            <input type="radio" name="q5" id="q5_6" class="hidebx" value="6">
+                            <label for="q5_6" class="lbl-radio">
+                                <div class="dbox">
+                                    6
+                                </div>
+                            </label>
+
+                            <input type="radio" name="q5" id="q5_7" class="hidebx" value="7">
+                            <label for="q5_7" class="lbl-radio">
+                                <div class="dbox">
+                                    7
+                                </div>
+                            </label>
+
+                            <input type="radio" name="q5" id="q5_8" class="hidebx" value="8">
+                            <label for="q5_8" class="lbl-radio">
+                                <div class="dbox">
+                                    8
+                                </div>
+                            </label>
+                            <input type="radio" name="q5" id="q5_9" class="hidebx" value="9">
+                            <label for="q5_9" class="lbl-radio">
+                                <div class="dbox">
+                                    9
+                                </div>
+                            </label>
+                            <input type="radio" name="q5" id="q5_10" class="hidebx" value="10">
+                            <label for="q5_10" class="lbl-radio">
+                                <div class="dbox">
+                                    10
+                                </div>
+                            </label>
+                            <input type="radio" name="q5" id="q5_11" class="hidebx" value="0">
+                            <label for="q5_11" class="lbl-radio">
+                                <div class="dbox">
+                                    NA
+                                </div>
+                            </label>
+                        </div>
+                    </fieldset>
+                    <fieldset class="form-group">
+                        <span>Meets the deadline:</span>
+                        <div class="dbox_container">
+                            <input type="radio" name="q6" id="q6_1" class="hidebx" value="1" required>
+                            <label for="q6_1" class="lbl-radio">
+                                <div class="dbox">
+                                    1
+                                </div>
+                            </label>
+
+                            <input type="radio" name="q6" id="q6_2" class="hidebx" value="2">
+                            <label for="q6_2" class="lbl-radio">
+                                <div class="dbox">
+                                    2
+                                </div>
+                            </label>
+
+                            <input type="radio" name="q6" id="q6_3" class="hidebx" value="3">
+                            <label for="q6_3" class="lbl-radio">
+                                <div class="dbox">
+                                    3
+                                </div>
+                            </label>
+
+                            <input type="radio" name="q6" id="q6_4" class="hidebx" value="4">
+                            <label for="q6_4" class="lbl-radio">
+                                <div class="dbox">
+                                    4
+                                </div>
+                            </label>
+
+                            <input type="radio" name="q6" id="q6_5" class="hidebx" value="5">
+                            <label for="q6_5" class="lbl-radio">
+                                <div class="dbox">
+                                    5
+                                </div>
+                            </label>
+
+                            <input type="radio" name="q6" id="q6_6" class="hidebx" value="6">
+                            <label for="q6_6" class="lbl-radio">
+                                <div class="dbox">
+                                    6
+                                </div>
+                            </label>
+
+                            <input type="radio" name="q6" id="q6_7" class="hidebx" value="7">
+                            <label for="q6_7" class="lbl-radio">
+                                <div class="dbox">
+                                    7
+                                </div>
+                            </label>
+
+                            <input type="radio" name="q6" id="q6_8" class="hidebx" value="8">
+                            <label for="q6_8" class="lbl-radio">
+                                <div class="dbox">
+                                    8
+                                </div>
+                            </label>
+                            <input type="radio" name="q6" id="q6_9" class="hidebx" value="9">
+                            <label for="q6_9" class="lbl-radio">
+                                <div class="dbox">
+                                    9
+                                </div>
+                            </label>
+                            <input type="radio" name="q6" id="q6_10" class="hidebx" value="10">
+                            <label for="q6_10" class="lbl-radio">
+                                <div class="dbox">
+                                    10
+                                </div>
+                            </label>
+                            <input type="radio" name="q6" id="q6_11" class="hidebx" value="0">
+                            <label for="q6_11" class="lbl-radio">
+                                <div class="dbox">
+                                    NA
+                                </div>
+                            </label>
+                        </div>
+                    </fieldset>
+                    <fieldset class="form-group">
+                        <span>Take the initiative of work:</span>
+                        <div class="dbox_container">
+                            <input type="radio" name="q7" id="q7_1" class="hidebx" value="1" required>
+                            <label for="q7_1" class="lbl-radio">
+                                <div class="dbox">
+                                    1
+                                </div>
+                            </label>
+
+                            <input type="radio" name="q7" id="q7_2" class="hidebx" value="2">
+                            <label for="q7_2" class="lbl-radio">
+                                <div class="dbox">
+                                    2
+                                </div>
+                            </label>
+
+                            <input type="radio" name="q7" id="q7_3" class="hidebx" value="3">
+                            <label for="q7_3" class="lbl-radio">
+                                <div class="dbox">
+                                    3
+                                </div>
+                            </label>
+
+                            <input type="radio" name="q7" id="q7_4" class="hidebx" value="4">
+                            <label for="q7_4" class="lbl-radio">
+                                <div class="dbox">
+                                    4
+                                </div>
+                            </label>
+
+                            <input type="radio" name="q7" id="q7_5" class="hidebx" value="5">
+                            <label for="q7_5" class="lbl-radio">
+                                <div class="dbox">
+                                    5
+                                </div>
+                            </label>
+
+                            <input type="radio" name="q7" id="q7_6" class="hidebx" value="6">
+                            <label for="q7_6" class="lbl-radio">
+                                <div class="dbox">
+                                    6
+                                </div>
+                            </label>
+
+                            <input type="radio" name="q7" id="q7_7" class="hidebx" value="7">
+                            <label for="q7_7" class="lbl-radio">
+                                <div class="dbox">
+                                    7
+                                </div>
+                            </label>
+
+                            <input type="radio" name="q7" id="q7_8" class="hidebx" value="8">
+                            <label for="q7_8" class="lbl-radio">
+                                <div class="dbox">
+                                    8
+                                </div>
+                            </label>
+                            <input type="radio" name="q7" id="q7_9" class="hidebx" value="9">
+                            <label for="q7_9" class="lbl-radio">
+                                <div class="dbox">
+                                    9
+                                </div>
+                            </label>
+                            <input type="radio" name="q7" id="q7_10" class="hidebx" value="10" required>
+                            <label for="q7_10" class="lbl-radio">
+                                <div class="dbox">
+                                    10
+                                </div>
+                            </label>
+                            <input type="radio" name="q7" id="q7_11" class="hidebx" value="0">
+                            <label for="q7_11" class="lbl-radio">
+                                <div class="dbox">
+                                    NA
+                                </div>
+                            </label>
+                        </div>
+                    </fieldset>
+                    <fieldset class="form-group">
+                        <span>Has a good work ethic :</span>
+                        <div class="dbox_container">
+                            <input type="radio" name="q8" id="q8_1" class="hidebx" value="1" required>
+                            <label for="q8_1" class="lbl-radio">
+                                <div class="dbox">
+                                    1
+                                </div>
+                            </label>
+
+                            <input type="radio" name="q8" id="q8_2" class="hidebx" value="2">
+                            <label for="q8_2" class="lbl-radio">
+                                <div class="dbox">
+                                    2
+                                </div>
+                            </label>
+
+                            <input type="radio" name="q8" id="q8_3" class="hidebx" value="3">
+                            <label for="q8_3" class="lbl-radio">
+                                <div class="dbox">
+                                    3
+                                </div>
+                            </label>
+
+                            <input type="radio" name="q8" id="q8_4" class="hidebx" value="4">
+                            <label for="q8_4" class="lbl-radio">
+                                <div class="dbox">
+                                    4
+                                </div>
+                            </label>
+
+                            <input type="radio" name="q8" id="q8_5" class="hidebx" value="5">
+                            <label for="q8_5" class="lbl-radio">
+                                <div class="dbox">
+                                    5
+                                </div>
+                            </label>
+
+                            <input type="radio" name="q8" id="q8_6" class="hidebx" value="6">
+                            <label for="q8_6" class="lbl-radio">
+                                <div class="dbox">
+                                    6
+                                </div>
+                            </label>
+
+                            <input type="radio" name="q8" id="q8_7" class="hidebx" value="7">
+                            <label for="q8_7" class="lbl-radio">
+                                <div class="dbox">
+                                    7
+                                </div>
+                            </label>
+
+                            <input type="radio" name="q8" id="q8_8" class="hidebx" value="8">
+                            <label for="q8_8" class="lbl-radio">
+                                <div class="dbox">
+                                    8
+                                </div>
+                            </label>
+                            <input type="radio" name="q8" id="q8_9" class="hidebx" value="9">
+                            <label for="q8_9" class="lbl-radio">
+                                <div class="dbox">
+                                    9
+                                </div>
+                            </label>
+                            <input type="radio" name="q8" id="q8_10" class="hidebx" value="10">
+                            <label for="q8_10" class="lbl-radio">
+                                <div class="dbox">
+                                    10
+                                </div>
+                            </label>
+                            <input type="radio" name="q8" id="q8_11" class="hidebx" value="0">
+                            <label for="q8_11" class="lbl-radio">
+                                <div class="dbox">
+                                    NA
+                                </div>
+                            </label>
+                        </div>
+                    </fieldset>
+                    <fieldset class="form-group">
+                        <span>Attentive at work :</span>
+                        <div class="dbox_container">
+                            <input type="radio" name="q9" id="q9_1" class="hidebx" value="1" required>
+                            <label for="q9_1" class="lbl-radio">
+                                <div class="dbox">
+                                    1
+                                </div>
+                            </label>
+
+                            <input type="radio" name="q9" id="q9_2" class="hidebx" value="2">
+                            <label for="q9_2" class="lbl-radio">
+                                <div class="dbox">
+                                    2
+                                </div>
+                            </label>
+
+                            <input type="radio" name="q9" id="q9_3" class="hidebx" value="3">
+                            <label for="q9_3" class="lbl-radio">
+                                <div class="dbox">
+                                    3
+                                </div>
+                            </label>
+
+                            <input type="radio" name="q9" id="q9_4" class="hidebx" value="4">
+                            <label for="q9_4" class="lbl-radio">
+                                <div class="dbox">
+                                    4
+                                </div>
+                            </label>
+
+                            <input type="radio" name="q9" id="q9_5" class="hidebx" value="5">
+                            <label for="q9_5" class="lbl-radio">
+                                <div class="dbox">
+                                    5
+                                </div>
+                            </label>
+
+                            <input type="radio" name="q9" id="q9_6" class="hidebx" value="6">
+                            <label for="q9_6" class="lbl-radio">
+                                <div class="dbox">
+                                    6
+                                </div>
+                            </label>
+
+                            <input type="radio" name="q9" id="q9_7" class="hidebx" value="7">
+                            <label for="q9_7" class="lbl-radio">
+                                <div class="dbox">
+                                    7
+                                </div>
+                            </label>
+
+                            <input type="radio" name="q9" id="q9_8" class="hidebx" value="8">
+                            <label for="q9_8" class="lbl-radio">
+                                <div class="dbox">
+                                    8
+                                </div>
+                            </label>
+                            <input type="radio" name="q9" id="q9_9" class="hidebx" value="9">
+                            <label for="q9_9" class="lbl-radio">
+                                <div class="dbox">
+                                    9
+                                </div>
+                            </label>
+                            <input type="radio" name="q9" id="q9_10" class="hidebx" value="10">
+                            <label for="q9_10" class="lbl-radio">
+                                <div class="dbox">
+                                    10
+                                </div>
+                            </label>
+                            <input type="radio" name="q9" id="q9_11" class="hidebx" value="0">
+                            <label for="q9_11" class="lbl-radio">
+                                <div class="dbox">
+                                    NA
+                                </div>
+                            </label>
+                        </div>
+                    </fieldset>
+                    <h3 class="pt-3">Cooperativeness</h3>
+                    <fieldset class="form-group">
+                        <span>Open to suggestions and new ideas:</span>
+                        <div class="dbox_container">
+                            <input type="radio" name="q10" id="q10_1" class="hidebx" value="1" required>
+                            <label for="q10_1" class="lbl-radio">
+                                <div class="dbox">
+                                    1
+                                </div>
+                            </label>
+
+                            <input type="radio" name="q10" id="q10_2" class="hidebx" value="2">
+                            <label for="q10_2" class="lbl-radio">
+                                <div class="dbox">
+                                    2
+                                </div>
+                            </label>
+
+                            <input type="radio" name="q10" id="q10_3" class="hidebx" value="3">
+                            <label for="q10_3" class="lbl-radio">
+                                <div class="dbox">
+                                    3
+                                </div>
+                            </label>
+
+                            <input type="radio" name="q10" id="q10_4" class="hidebx" value="4">
+                            <label for="q10_4" class="lbl-radio">
+                                <div class="dbox">
+                                    4
+                                </div>
+                            </label>
+
+                            <input type="radio" name="q10" id="q10_5" class="hidebx" value="5">
+                            <label for="q10_5" class="lbl-radio">
+                                <div class="dbox">
+                                    5
+                                </div>
+                            </label>
+
+                            <input type="radio" name="q10" id="q10_6" class="hidebx" value="6">
+                            <label for="q10_6" class="lbl-radio">
+                                <div class="dbox">
+                                    6
+                                </div>
+                            </label>
+
+                            <input type="radio" name="q10" id="q10_7" class="hidebx" value="7">
+                            <label for="q10_7" class="lbl-radio">
+                                <div class="dbox">
+                                    7
+                                </div>
+                            </label>
+
+                            <input type="radio" name="q10" id="q10_8" class="hidebx" value="8">
+                            <label for="q10_8" class="lbl-radio">
+                                <div class="dbox">
+                                    8
+                                </div>
+                            </label>
+                            <input type="radio" name="q10" id="q10_9" class="hidebx" value="9">
+                            <label for="q10_9" class="lbl-radio">
+                                <div class="dbox">
+                                    9
+                                </div>
+                            </label>
+                            <input type="radio" name="q10" id="q10_10" class="hidebx" value="10">
+                            <label for="q10_10" class="lbl-radio">
+                                <div class="dbox">
+                                    10
+                                </div>
+                            </label>
+                            <input type="radio" name="q10" id="q10_11" class="hidebx" value="0">
+                            <label for="q10_11" class="lbl-radio">
+                                <div class="dbox">
+                                    NA
+                                </div>
+                            </label>
+                        </div>
+                    </fieldset>
+                    <fieldset class="form-group">
+                        <span>Shows a positive attitude at work as part of the job:</span>
+                        <div class="dbox_container">
+                            <input type="radio" name="q11" id="q11_1" class="hidebx" value="1" required>
+                            <label for="q11_1" class="lbl-radio">
+                                <div class="dbox">
+                                    1
+                                </div>
+                            </label>
+
+                            <input type="radio" name="q11" id="q11_2" class="hidebx" value="2">
+                            <label for="q11_2" class="lbl-radio">
+                                <div class="dbox">
+                                    2
+                                </div>
+                            </label>
+
+                            <input type="radio" name="q11" id="q11_3" class="hidebx" value="3">
+                            <label for="q11_3" class="lbl-radio">
+                                <div class="dbox">
+                                    3
+                                </div>
+                            </label>
+
+                            <input type="radio" name="q11" id="q11_4" class="hidebx" value="4">
+                            <label for="q11_4" class="lbl-radio">
+                                <div class="dbox">
+                                    4
+                                </div>
+                            </label>
+
+                            <input type="radio" name="q11" id="q11_5" class="hidebx" value="5">
+                            <label for="q11_5" class="lbl-radio">
+                                <div class="dbox">
+                                    5
+                                </div>
+                            </label>
+
+                            <input type="radio" name="q11" id="q11_6" class="hidebx" value="6">
+                            <label for="q11_6" class="lbl-radio">
+                                <div class="dbox">
+                                    6
+                                </div>
+                            </label>
+
+                            <input type="radio" name="q11" id="q11_7" class="hidebx" value="7">
+                            <label for="q11_7" class="lbl-radio">
+                                <div class="dbox">
+                                    7
+                                </div>
+                            </label>
+
+                            <input type="radio" name="q11" id="q11_8" class="hidebx" value="8">
+                            <label for="q11_8" class="lbl-radio">
+                                <div class="dbox">
+                                    8
+                                </div>
+                            </label>
+                            <input type="radio" name="q11" id="q11_9" class="hidebx" value="9">
+                            <label for="q11_9" class="lbl-radio">
+                                <div class="dbox">
+                                    9
+                                </div>
+                            </label>
+                            <input type="radio" name="q11" id="q11_10" class="hidebx" value="10">
+                            <label for="q11_10" class="lbl-radio">
+                                <div class="dbox">
+                                    10
+                                </div>
+                            </label>
+                            <input type="radio" name="q11" id="q11_11" class="hidebx" value="0">
+                            <label for="q11_11" class="lbl-radio">
+                                <div class="dbox">
+                                    NA
+                                </div>
+                            </label>
+                        </div>
+                    </fieldset>
+                    <fieldset class="form-group">
+                        <span>Work well with peers:</span>
+                        <div class="dbox_container">
+                            <input type="radio" name="q12" id="q12_1" class="hidebx" value="1" required>
+                            <label for="q12_1" class="lbl-radio">
+                                <div class="dbox">
+                                    1
+                                </div>
+                            </label>
+
+                            <input type="radio" name="q12" id="q12_2" class="hidebx" value="2">
+                            <label for="q12_2" class="lbl-radio">
+                                <div class="dbox">
+                                    2
+                                </div>
+                            </label>
+
+                            <input type="radio" name="q12" id="q12_3" class="hidebx" value="3">
+                            <label for="q12_3" class="lbl-radio">
+                                <div class="dbox">
+                                    3
+                                </div>
+                            </label>
+
+                            <input type="radio" name="q12" id="q12_4" class="hidebx" value="4">
+                            <label for="q12_4" class="lbl-radio">
+                                <div class="dbox">
+                                    4
+                                </div>
+                            </label>
+
+                            <input type="radio" name="q12" id="q12_5" class="hidebx" value="5">
+                            <label for="q12_5" class="lbl-radio">
+                                <div class="dbox">
+                                    5
+                                </div>
+                            </label>
+
+                            <input type="radio" name="q12" id="q12_6" class="hidebx" value="6">
+                            <label for="q12_6" class="lbl-radio">
+                                <div class="dbox">
+                                    6
+                                </div>
+                            </label>
+
+                            <input type="radio" name="q12" id="q12_7" class="hidebx" value="7">
+                            <label for="q12_7" class="lbl-radio">
+                                <div class="dbox">
+                                    7
+                                </div>
+                            </label>
+
+                            <input type="radio" name="q12" id="q12_8" class="hidebx" value="8">
+                            <label for="q12_8" class="lbl-radio">
+                                <div class="dbox">
+                                    8
+                                </div>
+                            </label>
+                            <input type="radio" name="q12" id="q12_9" class="hidebx" value="9">
+                            <label for="q12_9" class="lbl-radio">
+                                <div class="dbox">
+                                    9
+                                </div>
+                            </label>
+                            <input type="radio" name="q12" id="q12_10" class="hidebx" value="10">
+                            <label for="q12_10" class="lbl-radio">
+                                <div class="dbox">
+                                    10
+                                </div>
+                            </label>
+                            <input type="radio" name="q12" id="q12_11" class="hidebx" value="0">
+                            <label for="q12_11" class="lbl-radio">
+                                <div class="dbox">
+                                    NA
+                                </div>
+                            </label>
+                        </div>
+                    </fieldset>
+                    <fieldset class="form-group">
+                        <span>Willingly accepts orders:</span>
+                        <div class="dbox_container">
+                            <input type="radio" name="q13" id="q13_1" class="hidebx" value="1" required>
+                            <label for="q13_1" class="lbl-radio">
+                                <div class="dbox">
+                                    1
+                                </div>
+                            </label>
+
+                            <input type="radio" name="q13" id="q13_2" class="hidebx" value="2">
+                            <label for="q13_2" class="lbl-radio">
+                                <div class="dbox">
+                                    2
+                                </div>
+                            </label>
+
+                            <input type="radio" name="q13" id="q13_3" class="hidebx" value="3">
+                            <label for="q13_3" class="lbl-radio">
+                                <div class="dbox">
+                                    3
+                                </div>
+                            </label>
+
+                            <input type="radio" name="q13" id="q13_4" class="hidebx" value="4">
+                            <label for="q13_4" class="lbl-radio">
+                                <div class="dbox">
+                                    4
+                                </div>
+                            </label>
+
+                            <input type="radio" name="q13" id="q13_5" class="hidebx" value="5">
+                            <label for="q13_5" class="lbl-radio">
+                                <div class="dbox">
+                                    5
+                                </div>
+                            </label>
+
+                            <input type="radio" name="q13" id="q13_6" class="hidebx" value="6">
+                            <label for="q13_6" class="lbl-radio">
+                                <div class="dbox">
+                                    6
+                                </div>
+                            </label>
+
+                            <input type="radio" name="q13" id="q13_7" class="hidebx" value="7">
+                            <label for="q13_7" class="lbl-radio">
+                                <div class="dbox">
+                                    7
+                                </div>
+                            </label>
+
+                            <input type="radio" name="q13" id="q13_8" class="hidebx" value="8">
+                            <label for="q13_8" class="lbl-radio">
+                                <div class="dbox">
+                                    8
+                                </div>
+                            </label>
+                            <input type="radio" name="q13" id="q13_9" class="hidebx" value="9">
+                            <label for="q13_9" class="lbl-radio">
+                                <div class="dbox">
+                                    9
+                                </div>
+                            </label>
+                            <input type="radio" name="q13" id="q13_10" class="hidebx" value="10">
+                            <label for="q13_10" class="lbl-radio">
+                                <div class="dbox">
+                                    10
+                                </div>
+                            </label>
+                            <input type="radio" name="q13" id="q13_11" class="hidebx" value="0">
+                            <label for="q13_11" class="lbl-radio">
+                                <div class="dbox">
+                                    NA
+                                </div>
+                            </label>
+                        </div>
+                    </fieldset>
+                    <h3 class="pt-3">Collaboration and teamwork</h3>
+                    <fieldset class="form-group">
+                        <span>Feel like working in a team:</span>
+                        <div class="dbox_container">
+                            <input type="radio" name="q14" id="q14_1" class="hidebx" value="1" required>
+                            <label for="q14_1" class="lbl-radio">
+                                <div class="dbox">
+                                    1
+                                </div>
+                            </label>
+
+                            <input type="radio" name="q14" id="q14_2" class="hidebx" value="2">
+                            <label for="q14_2" class="lbl-radio">
+                                <div class="dbox">
+                                    2
+                                </div>
+                            </label>
+
+                            <input type="radio" name="q14" id="q14_3" class="hidebx" value="3">
+                            <label for="q14_3" class="lbl-radio">
+                                <div class="dbox">
+                                    3
+                                </div>
+                            </label>
+
+                            <input type="radio" name="q14" id="q14_4" class="hidebx" value="4">
+                            <label for="q14_4" class="lbl-radio">
+                                <div class="dbox">
+                                    4
+                                </div>
+                            </label>
+
+                            <input type="radio" name="q14" id="q14_5" class="hidebx" value="5">
+                            <label for="q14_5" class="lbl-radio">
+                                <div class="dbox">
+                                    5
+                                </div>
+                            </label>
+
+                            <input type="radio" name="q14" id="q14_6" class="hidebx" value="6">
+                            <label for="q14_6" class="lbl-radio">
+                                <div class="dbox">
+                                    6
+                                </div>
+                            </label>
+
+                            <input type="radio" name="q14" id="q14_7" class="hidebx" value="7">
+                            <label for="q14_7" class="lbl-radio">
+                                <div class="dbox">
+                                    7
+                                </div>
+                            </label>
+
+                            <input type="radio" name="q14" id="q14_8" class="hidebx" value="8">
+                            <label for="q14_8" class="lbl-radio">
+                                <div class="dbox">
+                                    8
+                                </div>
+                            </label>
+                            <input type="radio" name="q14" id="q14_9" class="hidebx" value="9">
+                            <label for="q14_9" class="lbl-radio">
+                                <div class="dbox">
+                                    9
+                                </div>
+                            </label>
+                            <input type="radio" name="q14" id="q14_10" class="hidebx" value="10">
+                            <label for="q14_10" class="lbl-radio">
+                                <div class="dbox">
+                                    10
+                                </div>
+                            </label>
+                            <input type="radio" name="q14" id="q14_11" class="hidebx" value="0">
+                            <label for="q14_11" class="lbl-radio">
+                                <div class="dbox">
+                                    NA
+                                </div>
+                            </label>
+                        </div>
+                    </fieldset>
+                    <fieldset class="form-group">
+                        <span>Keep current information about each job:</span>
+                        <div class="dbox_container">
+                            <input type="radio" name="q15" id="q15_1" class="hidebx" value="1" required>
+                            <label for="q15_1" class="lbl-radio">
+                                <div class="dbox">
+                                    1
+                                </div>
+                            </label>
+
+                            <input type="radio" name="q15" id="q15_2" class="hidebx" value="2">
+                            <label for="q15_2" class="lbl-radio">
+                                <div class="dbox">
+                                    2
+                                </div>
+                            </label>
+
+                            <input type="radio" name="q15" id="q15_3" class="hidebx" value="3">
+                            <label for="q15_3" class="lbl-radio">
+                                <div class="dbox">
+                                    3
+                                </div>
+                            </label>
+
+                            <input type="radio" name="q15" id="q15_4" class="hidebx" value="4">
+                            <label for="q15_4" class="lbl-radio">
+                                <div class="dbox">
+                                    4
+                                </div>
+                            </label>
+
+                            <input type="radio" name="q15" id="q15_5" class="hidebx" value="5">
+                            <label for="q15_5" class="lbl-radio">
+                                <div class="dbox">
+                                    5
+                                </div>
+                            </label>
+
+                            <input type="radio" name="q15" id="q15_6" class="hidebx" value="6">
+                            <label for="q15_6" class="lbl-radio">
+                                <div class="dbox">
+                                    6
+                                </div>
+                            </label>
+
+                            <input type="radio" name="q15" id="q15_7" class="hidebx" value="7">
+                            <label for="q15_7" class="lbl-radio">
+                                <div class="dbox">
+                                    7
+                                </div>
+                            </label>
+
+                            <input type="radio" name="q15" id="q15_8" class="hidebx" value="8">
+                            <label for="q15_8" class="lbl-radio">
+                                <div class="dbox">
+                                    8
+                                </div>
+                            </label>
+                            <input type="radio" name="q15" id="q15_9" class="hidebx" value="9">
+                            <label for="q15_9" class="lbl-radio">
+                                <div class="dbox">
+                                    9
+                                </div>
+                            </label>
+                            <input type="radio" name="q15" id="q15_10" class="hidebx" value="10">
+                            <label for="q15_10" class="lbl-radio">
+                                <div class="dbox">
+                                    10
+                                </div>
+                            </label>
+                            <input type="radio" name="q15" id="q15_11" class="hidebx" value="0">
+                            <label for="q15_11" class="lbl-radio">
+                                <div class="dbox">
+                                    NA
+                                </div>
+                            </label>
+                        </div>
+                    </fieldset>
+                    <fieldset class="form-group">
+                        <span>Meets expectations and understands how to get the tasks done:</span>
+                        <div class="dbox_container">
+                            <input type="radio" name="q16" id="q16_1" class="hidebx" value="1" required>
+                            <label for="q16_1" class="lbl-radio">
+                                <div class="dbox">
+                                    1
+                                </div>
+                            </label>
+
+                            <input type="radio" name="q16" id="q16_2" class="hidebx" value="2">
+                            <label for="q16_2" class="lbl-radio">
+                                <div class="dbox">
+                                    2
+                                </div>
+                            </label>
+
+                            <input type="radio" name="q16" id="q16_3" class="hidebx" value="3">
+                            <label for="q16_3" class="lbl-radio">
+                                <div class="dbox">
+                                    3
+                                </div>
+                            </label>
+
+                            <input type="radio" name="q16" id="q16_4" class="hidebx" value="4">
+                            <label for="q16_4" class="lbl-radio">
+                                <div class="dbox">
+                                    4
+                                </div>
+                            </label>
+
+                            <input type="radio" name="q16" id="q16_5" class="hidebx" value="5">
+                            <label for="q16_5" class="lbl-radio">
+                                <div class="dbox">
+                                    5
+                                </div>
+                            </label>
+
+                            <input type="radio" name="q16" id="q16_6" class="hidebx" value="6">
+                            <label for="q16_6" class="lbl-radio">
+                                <div class="dbox">
+                                    6
+                                </div>
+                            </label>
+
+                            <input type="radio" name="q16" id="q16_7" class="hidebx" value="7">
+                            <label for="q16_7" class="lbl-radio">
+                                <div class="dbox">
+                                    7
+                                </div>
+                            </label>
+
+                            <input type="radio" name="q16" id="q16_8" class="hidebx" value="8">
+                            <label for="q16_8" class="lbl-radio">
+                                <div class="dbox">
+                                    8
+                                </div>
+                            </label>
+                            <input type="radio" name="q16" id="q16_9" class="hidebx" value="9">
+                            <label for="q16_9" class="lbl-radio">
+                                <div class="dbox">
+                                    9
+                                </div>
+                            </label>
+                            <input type="radio" name="q16" id="q16_10" class="hidebx" value="10">
+                            <label for="q16_10" class="lbl-radio">
+                                <div class="dbox">
+                                    10
+                                </div>
+                            </label>
+                            <input type="radio" name="q16" id="q16_11" class="hidebx" value="0">
+                            <label for="q16_11" class="lbl-radio">
+                                <div class="dbox">
+                                    NA
+                                </div>
+                            </label>
+                        </div>
+                    </fieldset>
+                    <h3 class="pt-3">Adaptability</h3>
+                    <fieldset class="form-group">
+                        <span>Shows willingness to adapt to change:</span>
+                        <div class="dbox_container">
+                            <input type="radio" name="q17" id="q17_1" class="hidebx" value="1" required>
+                            <label for="q17_1" class="lbl-radio">
+                                <div class="dbox">
+                                    1
+                                </div>
+                            </label>
+
+                            <input type="radio" name="q17" id="q17_2" class="hidebx" value="2">
+                            <label for="q17_2" class="lbl-radio">
+                                <div class="dbox">
+                                    2
+                                </div>
+                            </label>
+
+                            <input type="radio" name="q17" id="q17_3" class="hidebx" value="3">
+                            <label for="q17_3" class="lbl-radio">
+                                <div class="dbox">
+                                    3
+                                </div>
+                            </label>
+
+                            <input type="radio" name="q17" id="q17_4" class="hidebx" value="4">
+                            <label for="q17_4" class="lbl-radio">
+                                <div class="dbox">
+                                    4
+                                </div>
+                            </label>
+
+                            <input type="radio" name="q17" id="q17_5" class="hidebx" value="5">
+                            <label for="q17_5" class="lbl-radio">
+                                <div class="dbox">
+                                    5
+                                </div>
+                            </label>
+
+                            <input type="radio" name="q17" id="q17_6" class="hidebx" value="6">
+                            <label for="q17_6" class="lbl-radio">
+                                <div class="dbox">
+                                    6
+                                </div>
+                            </label>
+
+                            <input type="radio" name="q17" id="q17_7" class="hidebx" value="7">
+                            <label for="q17_7" class="lbl-radio">
+                                <div class="dbox">
+                                    7
+                                </div>
+                            </label>
+
+                            <input type="radio" name="q17" id="q17_8" class="hidebx" value="8">
+                            <label for="q17_8" class="lbl-radio">
+                                <div class="dbox">
+                                    8
+                                </div>
+                            </label>
+                            <input type="radio" name="q17" id="q17_9" class="hidebx" value="9">
+                            <label for="q17_9" class="lbl-radio">
+                                <div class="dbox">
+                                    9
+                                </div>
+                            </label>
+                            <input type="radio" name="q17" id="q17_10" class="hidebx" value="10">
+                            <label for="q17_10" class="lbl-radio">
+                                <div class="dbox">
+                                    10
+                                </div>
+                            </label>
+                            <input type="radio" name="q17" id="q17_11" class="hidebx" value="0">
+                            <label for="q17_11" class="lbl-radio">
+                                <div class="dbox">
+                                    NA
+                                </div>
+                            </label>
+                        </div>
+                    </fieldset>
+                    <fieldset class="form-group">
+                        <span>Shows enthusiasm for new challenges and ideas:</span>
+                        <div class="dbox_container">
+                            <input type="radio" name="q18" id="q18_1" class="hidebx" value="1" required>
+                            <label for="q18_1" class="lbl-radio">
+                                <div class="dbox">
+                                    1
+                                </div>
+                            </label>
+
+                            <input type="radio" name="q18" id="q18_2" class="hidebx" value="2">
+                            <label for="q18_2" class="lbl-radio">
+                                <div class="dbox">
+                                    2
+                                </div>
+                            </label>
+
+                            <input type="radio" name="q18" id="q18_3" class="hidebx" value="3">
+                            <label for="q18_3" class="lbl-radio">
+                                <div class="dbox">
+                                    3
+                                </div>
+                            </label>
+
+                            <input type="radio" name="q18" id="q18_4" class="hidebx" value="4">
+                            <label for="q18_4" class="lbl-radio">
+                                <div class="dbox">
+                                    4
+                                </div>
+                            </label>
+
+                            <input type="radio" name="q18" id="q18_5" class="hidebx" value="5">
+                            <label for="q18_5" class="lbl-radio">
+                                <div class="dbox">
+                                    5
+                                </div>
+                            </label>
+
+                            <input type="radio" name="q18" id="q18_6" class="hidebx" value="6">
+                            <label for="q18_6" class="lbl-radio">
+                                <div class="dbox">
+                                    6
+                                </div>
+                            </label>
+
+                            <input type="radio" name="q18" id="q18_7" class="hidebx" value="7">
+                            <label for="q18_7" class="lbl-radio">
+                                <div class="dbox">
+                                    7
+                                </div>
+                            </label>
+
+                            <input type="radio" name="q18" id="q18_8" class="hidebx" value="8">
+                            <label for="q18_8" class="lbl-radio">
+                                <div class="dbox">
+                                    8
+                                </div>
+                            </label>
+                            <input type="radio" name="q18" id="q18_9" class="hidebx" value="9">
+                            <label for="q18_9" class="lbl-radio">
+                                <div class="dbox">
+                                    9
+                                </div>
+                            </label>
+                            <input type="radio" name="q18" id="q18_10" class="hidebx" value="10">
+                            <label for="q18_10" class="lbl-radio">
+                                <div class="dbox">
+                                    10
+                                </div>
+                            </label>
+                            <input type="radio" name="q18" id="q18_11" class="hidebx" value="0">
+                            <label for="q18_11" class="lbl-radio">
+                                <div class="dbox">
+                                    NA
+                                </div>
+                            </label>
+                        </div>
+                    </fieldset>
+                    <fieldset class="form-group">
+                        <span>Effectively adapt his work to changing circumstances:</span>
+                        <div class="dbox_container">
+                            <input type="radio" name="q19" id="q19_1" class="hidebx" value="1" required>
+                            <label for="q19_1" class="lbl-radio">
+                                <div class="dbox">
+                                    1
+                                </div>
+                            </label>
+
+                            <input type="radio" name="q19" id="q19_2" class="hidebx" value="2">
+                            <label for="q19_2" class="lbl-radio">
+                                <div class="dbox">
+                                    2
+                                </div>
+                            </label>
+
+                            <input type="radio" name="q19" id="q19_3" class="hidebx" value="3">
+                            <label for="q19_3" class="lbl-radio">
+                                <div class="dbox">
+                                    3
+                                </div>
+                            </label>
+
+                            <input type="radio" name="q19" id="q19_4" class="hidebx" value="4">
+                            <label for="q19_4" class="lbl-radio">
+                                <div class="dbox">
+                                    4
+                                </div>
+                            </label>
+
+                            <input type="radio" name="q19" id="q19_5" class="hidebx" value="5">
+                            <label for="q19_5" class="lbl-radio">
+                                <div class="dbox">
+                                    5
+                                </div>
+                            </label>
+
+                            <input type="radio" name="q19" id="q19_6" class="hidebx" value="6">
+                            <label for="q19_6" class="lbl-radio">
+                                <div class="dbox">
+                                    6
+                                </div>
+                            </label>
+
+                            <input type="radio" name="q19" id="q19_7" class="hidebx" value="7">
+                            <label for="q19_7" class="lbl-radio">
+                                <div class="dbox">
+                                    7
+                                </div>
+                            </label>
+
+                            <input type="radio" name="q19" id="q19_8" class="hidebx" value="8">
+                            <label for="q19_8" class="lbl-radio">
+                                <div class="dbox">
+                                    8
+                                </div>
+                            </label>
+                            <input type="radio" name="q19" id="q19_9" class="hidebx" value="9">
+                            <label for="q19_9" class="lbl-radio">
+                                <div class="dbox">
+                                    9
+                                </div>
+                            </label>
+                            <input type="radio" name="q19" id="q19_10" class="hidebx" value="10">
+                            <label for="q19_10" class="lbl-radio">
+                                <div class="dbox">
+                                    10
+                                </div>
+                            </label>
+                            <input type="radio" name="q19" id="q19_11" class="hidebx" value="0">
+                            <label for="q19_11" class="lbl-radio">
+                                <div class="dbox">
+                                    NA
+                                </div>
+                            </label>
+                        </div>
+                    </fieldset>
+                    <fieldset class="form-group">
+                        <span>Think ahead to plan how to accommodate changing circumstances at work:</span>
+                        <div class="dbox_container">
+                            <input type="radio" name="q20" id="q20_1" class="hidebx" value="1" required>
+                            <label for="q20_1" class="lbl-radio">
+                                <div class="dbox">
+                                    1
+                                </div>
+                            </label>
+
+                            <input type="radio" name="q20" id="q20_2" class="hidebx" value="2">
+                            <label for="q20_2" class="lbl-radio">
+                                <div class="dbox">
+                                    2
+                                </div>
+                            </label>
+
+                            <input type="radio" name="q20" id="q20_3" class="hidebx" value="3">
+                            <label for="q20_3" class="lbl-radio">
+                                <div class="dbox">
+                                    3
+                                </div>
+                            </label>
+
+                            <input type="radio" name="q20" id="q20_4" class="hidebx" value="4">
+                            <label for="q20_4" class="lbl-radio">
+                                <div class="dbox">
+                                    4
+                                </div>
+                            </label>
+
+                            <input type="radio" name="q20" id="q20_5" class="hidebx" value="5">
+                            <label for="q20_5" class="lbl-radio">
+                                <div class="dbox">
+                                    5
+                                </div>
+                            </label>
+
+                            <input type="radio" name="q20" id="q20_6" class="hidebx" value="6">
+                            <label for="q20_6" class="lbl-radio">
+                                <div class="dbox">
+                                    6
+                                </div>
+                            </label>
+
+                            <input type="radio" name="q20" id="q20_7" class="hidebx" value="7">
+                            <label for="q20_7" class="lbl-radio">
+                                <div class="dbox">
+                                    7
+                                </div>
+                            </label>
+
+                            <input type="radio" name="q20" id="q20_8" class="hidebx" value="8">
+                            <label for="q20_8" class="lbl-radio">
+                                <div class="dbox">
+                                    8
+                                </div>
+                            </label>
+                            <input type="radio" name="q20" id="q20_9" class="hidebx" value="9">
+                            <label for="q20_9" class="lbl-radio">
+                                <div class="dbox">
+                                    9
+                                </div>
+                            </label>
+                            <input type="radio" name="q20" id="q20_10" class="hidebx" value="10">
+                            <label for="q20_10" class="lbl-radio">
+                                <div class="dbox">
+                                    10
+                                </div>
+                            </label>
+                            <input type="radio" name="q20" id="q20_11" class="hidebx" value="0">
+                            <label for="q20_11" class="lbl-radio">
+                                <div class="dbox">
+                                    NA
+                                </div>
+                            </label>
+                        </div>
+                    </fieldset>
+
+
+
+
+                    <input type="submit" name="save" class="mt-3 btn btn-md btn-primary pull-right" value="Submit">
+
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

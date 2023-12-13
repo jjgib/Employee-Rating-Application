@@ -1,0 +1,92 @@
+<section class="emp-login-page">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-md-4 offset-md-4">
+                <h2>Login for employees(CWF)</h2>
+                {{#if loginErr}}
+                <p class="alert alert-danger">{{loginErr}}</p>
+                {{/if}}
+
+                <p id="logging-msg" class="alert alert-success" style="display:none;">Logging....</p>
+                <form id="emp-login" action="/rating/rating-form-coworker" method="POST">
+                    <div class="mb-3 form-group">
+                        <input type="text" name="emp_id" class="form-control" placeholder="Employee ID">
+                    </div>
+                    <div class="mb-3 form-group">
+                        <input id="date-format" type="text" name="emp_dob" class="date-format form-control"
+                            placeholder="Date of Birth">
+                        <span class="dob_error_msg" style="display: none">Invalid Date. Only dd/MM/yyyy format
+                            allowed.</span>
+                    </div>
+                    <button id="emp-login-form-btn" class="btn btn-primary" type="submit">Submit</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<script type="text/javascript">
+    var isShift = false;
+    var seperator = "/";
+    window.onload = function () {
+        //Reference the Table.
+        var tblForm = document.getElementById("emp-login");
+
+        //Reference all INPUT elements in the Table.
+        var inputs = document.getElementById("date-format");
+
+        //Set Max Length.
+        inputs.setAttribute("maxlength", 10);
+
+        //Only allow Numeric Keys.
+        inputs.onkeydown = function (e) {
+            return IsNumeric(this, e.keyCode);
+        };
+
+        //Validate Date as User types.
+        inputs.onkeyup = function (e) {
+            ValidateDateFormat(this, e.keyCode);
+        };
+    };
+
+    function IsNumeric(input, keyCode) {
+        if (keyCode == 16) {
+            isShift = true;
+        }
+        //Allow only Numeric Keys.
+        if (((keyCode >= 48 && keyCode <= 57) || keyCode == 8 || keyCode <= 37 || keyCode <= 39 || (keyCode >= 96 && keyCode <= 105)) && isShift == false) {
+            if ((input.value.length == 2 || input.value.length == 5) && keyCode != 8) {
+                input.value += seperator;
+            }
+
+            return true;
+        }
+        else {
+            return false;
+        }
+    };
+
+    function ValidateDateFormat(input, keyCode) {
+        var dateString = input.value;
+        if (keyCode == 16) {
+            isShift = false;
+        }
+        var regex = /(((0|1)[0-9]|2[0-9]|3[0-1])\/(0[1-9]|1[0-2])\/((19|20)\d\d))$/;
+
+        //Check whether valid dd/MM/yyyy Date Format.
+        if (regex.test(dateString) || dateString.length == 0) {
+            ShowHideError(input, "none");
+        } else {
+            ShowHideError(input, "block");
+        }
+    };
+
+    function ShowHideError(textbox, display) {
+        var row = textbox.parentNode.parentNode;
+        var errorMsg = row.getElementsByTagName("span")[0];
+        if (errorMsg != null) {
+            errorMsg.style.display = display;
+        }
+    };
+</script>

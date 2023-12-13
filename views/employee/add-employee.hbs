@@ -1,0 +1,123 @@
+<div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <div class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-6">
+                    <h1 class="m-0">Add Employee</h1>
+                </div><!-- /.col -->
+                <div class="col-sm-6">
+                    <ol class="breadcrumb float-sm-right">
+                        <li class="breadcrumb-item"><a href="/dashboard">Home</a></li>
+                        <li class="breadcrumb-item active">Add Employee</li>
+                    </ol>
+                </div><!-- /.col -->
+                <div class="col-md-12">
+                    <div style="display: none;" class="alert alert-success"></div>
+                    <div style="display: none;" class="alert alert-danger"></div>
+                </div>
+            </div><!-- /.row -->
+        </div><!-- /.container-fluid -->
+    </div>
+    <!-- /.content-header -->
+
+    <section class="content">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card card-primary">
+                        <div class="card-header">
+                            <h3 class="card-title">Enter details </h3>
+                        </div>
+                        <!-- /.card-header -->
+                        <!-- form start -->
+
+                        <form id="employeeForm">
+                            <div class="card-body">
+                                <div class="row mb-10" style="margin-bottom:25px;">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="">First Name</label>
+                                            <input type="text" name="firstName" class="form-control" id="firstName"
+                                                placeholder="" value="{{empData.[0].firstName}}">
+                                            <input type="hidden" name="data_id" value="{{empData.[0]._id}}">
+
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="">Phone</label>
+                                            <input type="text" name="Phone" class="form-control" id="Phone"
+                                                placeholder="" value="{{empData.[0].phone}}">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="">Street</label>
+                                            <input type="text" name="Street" class="form-control" id="Street"
+                                                placeholder="" value="{{empData.[0].street}}">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="">Zipcode</label>
+                                            <input type="text" name="Zipcode" class="form-control" id="Zipcode"
+                                                placeholder="" value="{{empData.[0].zipcode}}">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="">Country</label>
+                                            <input type="text" name="Country" class="form-control" id="Country"
+                                                placeholder="" value="{{empData.[0].country}}">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="">Last Name</label>
+                                            <input type="text" name="lastName" class="form-control" id="lastName"
+                                                placeholder="" value="{{empData.[0].lastName}}">
+
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="">Email ID</label>
+                                            <input type="text" name="email_id" class="form-control" id="email_id"
+                                                placeholder="" value="{{empData.[0].email}}">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="">Date of Birth</label>
+                                            <div class="input-group">
+                                                <div class="input-group-prepend">
+                                                    <span class="input-group-text"><i
+                                                            class="far fa-calendar-alt"></i></span>
+                                                </div>
+                                                <input type="text" value="{{empData.[0].DOB}}" name="DOB"
+                                                    class="form-control" data-inputmask-alias="datetime"
+                                                    data-inputmask-inputformat="dd/mm/yyyy" data-mask>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="">Join date</label>
+                                            <div class="input-group date" id="joindate" data-target-input="nearest">
+                                                <input type="text" value="{{empData.[0].joinDate}}" name="joindate"
+                                                    class="form-control datetimepicker-input" data-target="#joindate" />
+                                                <div class="input-group-append" data-target="#joindate"
+                                                    data-toggle="datetimepicker">
+                                                    <div class="input-group-text"><i class="fa fa-calendar"></i></div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                    </div>
+                                    <div class="col-md-6">
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- /.card-body -->
+                            <div class="card-footer">
+                                <button type="submit" class="btn btn-primary">Submit</button>
+                            </div>
+                        </form>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
